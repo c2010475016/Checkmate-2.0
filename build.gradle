@@ -4,8 +4,10 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.9'
 }
 
-group 'org.example'
+group 'at.ac.fhcampuswien'
 version '1.0-SNAPSHOT'
+
+mainClassName = 'at.ac.fhcampuswien.JavaFX_test.Chessboard_FX'
 
 repositories {
     mavenCentral()
@@ -17,5 +19,5 @@ dependencies {
 
 javafx {
     version = "15.0.1"
-    modules = [ 'javafx.controls' ]
+    modules = [ 'javafx.controls', 'javafx.fxml']
 }
