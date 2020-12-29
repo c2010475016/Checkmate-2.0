@@ -28,9 +28,11 @@ public class Chessboard_FX extends Application {
     private static final int BOARD_SIZE = 600;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Group robot = FXMLLoader.load(getClass().getResource("test.fxml"));
-
         /*
+        //Group robot = FXMLLoader.load(getClass().getResource("test.fxml"));
+        //robot.setLayoutX(400);
+        //robot.setLayoutY(400);
+
         Rectangle r = new Rectangle(100,100);
         r.setLayoutX(100);
         r.setLayoutY(100);
@@ -39,10 +41,7 @@ public class Chessboard_FX extends Application {
         r.addEventHandler(MouseEvent.ANY, new DragEventHandler(r));
          */
 
-        //robot.setLayoutX(400);
-        //robot.setLayoutY(400);
         Group root = new Group();
-        Button revive = new Button();
 
         Rectangle[][] rectangles = new Rectangle[8][8];
 
@@ -85,11 +84,13 @@ public class Chessboard_FX extends Application {
             }
         }
 
+        /*
+        Button revive = new Button();
         revive.setText("Revive");
         revive.setPrefSize(100,30);
         revive.setLayoutX(5);
         revive.setLayoutY(5);
-        /*revive.setOnAction(e -> {
+        revive.setOnAction(e -> {
             Label label = (Label) robot.lookup("#label");
             if(robot.isVisible()){
                 label.setText("!Dead yet!?");
@@ -98,10 +99,9 @@ public class Chessboard_FX extends Application {
                 label.setText("Be nice this time!");
             }
         })
+        root.getChildren().addAll(revive);
          */
 
-
-        root.getChildren().addAll(revive);
         Scene scene = new Scene(root, BOARD_SIZE, BOARD_SIZE);
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
@@ -129,6 +129,7 @@ public class Chessboard_FX extends Application {
         robot.addEventHandler(MouseEvent.ANY, new DragEventHandler(robot));
 
          */
+
         primaryStage.setTitle("Hello Chess");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -137,4 +138,5 @@ public class Chessboard_FX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

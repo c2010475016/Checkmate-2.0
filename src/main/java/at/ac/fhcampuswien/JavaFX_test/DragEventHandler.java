@@ -44,8 +44,6 @@ public class DragEventHandler implements EventHandler<MouseEvent> {
             group.setLayoutY(group.getLayoutY() + deltaY);
             mouseX = newMouseX;
             mouseY = newMouseY;
-            //was for debugging purposes :)
-            //System.out.println("Event: " + event.getX() + " " +event.getY() + " | " + mouseX + " " + mouseY);
         }
         if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
             int newMouseX = (int) event.getSceneX() / 10;
@@ -65,6 +63,10 @@ public class DragEventHandler implements EventHandler<MouseEvent> {
                 group.setLayoutX(newMouseX + 25);
                 group.setLayoutY(newMouseY + 25);
             }
+            int newX = (newMouseX-100)/50;
+            int newY = (newMouseY-100)/50;
+            group.setId(newY + "" + newX);
+            System.out.println(group.getId());
         }
     }
 }

@@ -8,6 +8,8 @@ import javafx.scene.input.MouseEvent;
 
 import java.awt.*;
 
+//useless
+
 public class RobotController {
     @FXML
     private Group robot;
