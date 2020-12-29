@@ -9,6 +9,8 @@ import javafx.application.Platform;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -22,6 +24,9 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.File;
+import java.io.FileInputStream;
 
 public class Chessboard_FX extends Application {
 
@@ -75,7 +80,7 @@ public class Chessboard_FX extends Application {
                     r.setLayoutX(100 + groesse_rect * x + 25);
                     r.setLayoutY(100 + groesse_rect * i + 25);
                     r.setStroke(Color.BLACK);
-                    r.setId("0");
+                    r.setId(i + "" + x);
                     r.setFill(Color.RED);
                     circles[i][x] = r;
                     r.addEventHandler(MouseEvent.ANY, new DragEventHandler(r));
@@ -83,6 +88,22 @@ public class Chessboard_FX extends Application {
                 }
             }
         }
+
+        String resources = new File("./").getAbsolutePath();
+        resources = resources.substring(0,resources.length()-2);
+        Image image = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king.jpg"));
+        ImageView imageView = new ImageView(image);
+
+        imageView.setX(50);
+        imageView.setY(50);
+
+        imageView.setFitHeight(40);
+        imageView.setFitWidth(40);
+
+        imageView.setPreserveRatio(true);
+        root.getChildren().addAll(imageView);
+
+
 
         /*
         Button revive = new Button();

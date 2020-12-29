@@ -29,13 +29,9 @@ public class DragEventHandler implements EventHandler<MouseEvent> {
            mouseY = event.getSceneY();
            startfigX = group.getLayoutX();
            startfigY = group.getLayoutY();
-
-           //System.out.println("Event: " + event.getX() + " " +event.getY() + " | " + mouseX + " " + mouseY);
-           //System.out.println("Scene: " + event.getSceneX() + " " +event.getSceneY() + " | " + mouseX + " " + mouseY);
+           System.out.println(group.getId());
         }
         if (event.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-            // Help with dragging:
-            // https://stackoverflow.com/questions/32680689/javafx-mouseevent-location-accuracy-degrades-over-time-results-in-node-movement
             double newMouseX = event.getSceneX();
             double newMouseY = event.getSceneY();
             double deltaX = newMouseX - mouseX;
