@@ -1,11 +1,11 @@
-package at.ac.fhcampuswien.JavaFX_test;;
+package at.ac.fhcampuswien.JavaFX;;
 
 import at.ac.fhcampuswien.Board;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
-public class DragEventHandler implements EventHandler<MouseEvent> {
+public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static String nextMove = "white";
     private Board board;
     private Node group;
@@ -16,7 +16,7 @@ public class DragEventHandler implements EventHandler<MouseEvent> {
     private Boolean blackcheck = false,whitecheck  = false;
 
 
-    public DragEventHandler(Node group,Board board) {
+    public MouseEventHandler_Figures(Node group, Board board) {
         this.group = group;
         this.board = board;
     }
