@@ -1,5 +1,7 @@
 package at.ac.fhcampuswien.JavaFX_test;
+import at.ac.fhcampuswien.Board;
 import at.ac.fhcampuswien.Figures.Figure;
+import at.ac.fhcampuswien.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -27,24 +29,32 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.Scanner;
 
 public class Chessboard_FX extends Application {
 
     private static final int BOARD_SIZE = 600;
     @Override
     public void start(Stage primaryStage) throws Exception{
-        /*
-        //Group robot = FXMLLoader.load(getClass().getResource("test.fxml"));
-        //robot.setLayoutX(400);
-        //robot.setLayoutY(400);
 
-        Rectangle r = new Rectangle(100,100);
-        r.setLayoutX(100);
-        r.setLayoutY(100);
-        r.setId("10");
-        r.setFill(Color.RED);
-        r.addEventHandler(MouseEvent.ANY, new DragEventHandler(r));
-         */
+
+        Board board;
+        Player player1;
+        Player player2;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Player 1 Name: ");
+        player1 = new Player("Player 1","white");
+        System.out.print("Player 2 Name: ");
+        player2 = new Player("Player 2","black");
+        System.out.println(player1.getName() + " plays color " + player1.getColor());
+        System.out.println(player2.getName() + " plays color " + player2.getColor());
+        System.out.println(player1.getName() + " has to move first");
+        System.out.println("Game on!");
+        board = new Board();
+        board.resetBoard();
+        System.out.println(board);
+
+
 
         Group root = new Group();
 
@@ -64,7 +74,6 @@ public class Chessboard_FX extends Application {
                     r.setFill(Color.BLACK);
                 }
                 rectangles[i][x] = r;
-                //r.addEventHandler(MouseEvent.ANY, new DragEventHandler(r));
                 root.getChildren().addAll(r);
             }
         }
@@ -83,7 +92,7 @@ public class Chessboard_FX extends Application {
                     r.setId(i + "" + x);
                     r.setFill(Color.RED);
                     circles[i][x] = r;
-                    r.addEventHandler(MouseEvent.ANY, new DragEventHandler(r));
+                    r.addEventHandler(MouseEvent.ANY, new DragEventHandler(r,board));
                     root.getChildren().addAll(r);
                 }
             }
@@ -94,11 +103,14 @@ public class Chessboard_FX extends Application {
         Image image = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king.jpg"));
         ImageView imageView = new ImageView(image);
 
-        imageView.setX(50);
-        imageView.setY(50);
+        imageView.setX(100);
+        imageView.setY(100);
 
         imageView.setFitHeight(40);
         imageView.setFitWidth(40);
+        imageView.setId("00");
+
+        imageView.addEventHandler(MouseEvent.ANY, new DragEventHandler(imageView,board));
 
         imageView.setPreserveRatio(true);
         root.getChildren().addAll(imageView);

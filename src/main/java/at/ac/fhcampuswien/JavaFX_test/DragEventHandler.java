@@ -1,19 +1,24 @@
 package at.ac.fhcampuswien.JavaFX_test;;
 
+import at.ac.fhcampuswien.Board;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 
 public class DragEventHandler implements EventHandler<MouseEvent> {
+    private static String nextMove = "white";
+    private Board board;
     private Node group;
     private double mouseX;
     private double mouseY;
     private double startfigX;
     private double startfigY;
+    private Boolean blackcheck = false,whitecheck  = false;
 
 
-    public DragEventHandler(Node group) {
+    public DragEventHandler(Node group,Board board) {
         this.group = group;
+        this.board = board;
     }
 
     /**
@@ -52,17 +57,44 @@ public class DragEventHandler implements EventHandler<MouseEvent> {
             while (newMouseY % 50 != 0) {
                 newMouseY -= 10;
             }
-            if (group.getId().equals("1")) {
-                group.setLayoutX(startfigX);
-                group.setLayoutY(startfigY);
-            } else {
-                group.setLayoutX(newMouseX + 25);
-                group.setLayoutY(newMouseY + 25);
-            }
+            group.setLayoutX(newMouseX + 25);
+            group.setLayoutY(newMouseY + 25);
+
             int newX = (newMouseX-100)/50;
             int newY = (newMouseY-100)/50;
-            group.setId(newY + "" + newX);
-            System.out.println(group.getId());
+            int oldx = Integer.parseInt(group.getId().substring(0,1));
+            int oldy = Integer.parseInt(group.getId().substring(1));
+            System.out.println(newY + "" + newX);
+
+            if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
+
+                if(!board.moveFigure(new int[]{oldx,oldy},new int[]{newY,newX})) {
+                    System.out.println("invalid Move");
+                    group.setLayoutX(startfigX);
+                    group.setLayoutY(startfigY);
+                }else {
+                    System.out.println(board.toString());
+                    if (nextMove.equals("white")) {
+                        nextMove = "black";
+                    } else {
+                        nextMove = "white";
+                    }
+                    group.setId(newY + "" + newX);
+                }
+            }else {
+                System.out.println("not your Color");
+                group.setLayoutX(startfigX);
+                group.setLayoutY(startfigY);
+            }
+
+            if (board.isCheck(nextMove)){
+                if (board.isCheckmate(nextMove)){
+
+                }
+                System.out.println("Check on " + nextMove);
+            }
+
+
         }
     }
 }

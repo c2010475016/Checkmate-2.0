@@ -36,7 +36,7 @@ public class Figure {
     }
 
     //fehlt: falls nach dem move noch immer Schah besteht -> invalid move
-    public void move(int[]position){
+    public boolean move(int[]position){
         int[] oldPos = this.position;
         ArrayList<int[]> moves = getPossibleMoves();
         for (int[] whatever: moves) {
@@ -69,10 +69,10 @@ public class Figure {
                 this.board.Schachbrett[position[0]][position[1]] = this.board.Schachbrett[this.position[0]][this.position[1]];
                 this.board.Schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
                 this.board.Schachbrett[oldPos[0]][oldPos[1]] = null;
-                return;
+                return true;
             }
         }
-        invalidMove(false);
+        return false;
     }
 
     public void invalidMove(boolean check){

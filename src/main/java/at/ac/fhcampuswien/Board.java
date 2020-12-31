@@ -68,8 +68,8 @@ public class Board {
 
     }
 
-    public void moveFigure(int[]oldpos,int[]newpos) {
-        this.Schachbrett[oldpos[0]][oldpos[1]].move(newpos);
+    public boolean moveFigure(int[]oldpos,int[]newpos) {
+        return this.Schachbrett[oldpos[0]][oldpos[1]].move(newpos);
     }
 
     public boolean isValidMove(int[]move, String color){
