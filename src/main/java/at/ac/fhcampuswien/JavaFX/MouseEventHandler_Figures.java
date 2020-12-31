@@ -93,7 +93,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                 }
                 System.out.println("Check on " + nextMove);
             }
-
+            System.out.println("next to move: " + nextMove);
 
         }
     }

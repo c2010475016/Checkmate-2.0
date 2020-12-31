@@ -7,7 +7,7 @@ plugins {
 group 'at.ac.fhcampuswien'
 version '1.0-SNAPSHOT'
 
-mainClassName = 'at.ac.fhcampuswien.JavaFX_test.Chessboard_FX'
+mainClassName = 'at.ac.fhcampuswien.JavaFX.Chessboard_FX'
 
 repositories {
     mavenCentral()

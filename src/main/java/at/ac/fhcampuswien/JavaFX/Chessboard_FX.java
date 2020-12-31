@@ -88,8 +88,8 @@ public class Chessboard_FX extends Application {
         Image image = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king.jpg"));
         ImageView imageView = new ImageView(image);
 
-        imageView.setX(100);
-        imageView.setY(100);
+        imageView.setX(50);
+        imageView.setY(50);
 
         imageView.setFitHeight(40);
         imageView.setFitWidth(40);
