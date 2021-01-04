@@ -75,20 +75,6 @@ public class Figure {
         return false;
     }
 
-    public void invalidMove(boolean check){
-        Scanner scanner_newmove = new Scanner(System.in);
-        System.out.println("invalid Move");
-        if(check) {
-            System.out.println("youre still in Check");
-        }
-        System.out.println("Type in a new Move:");
-        System.out.println("Move from: ");
-        int fromx = scanner_newmove.nextInt();
-        int fromy = scanner_newmove.nextInt();
-        System.out.println("Move to: ");
-        this.board.moveFigure(new int[] {fromx,fromy},new int[]{scanner_newmove.nextInt(),scanner_newmove.nextInt()});
-    }
-
 
     public ArrayList<int[]> getPossibleMoves(){
         return null;

@@ -3,6 +3,7 @@ package at.ac.fhcampuswien.JavaFX;;
 import at.ac.fhcampuswien.Board;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
@@ -16,9 +17,11 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private Boolean blackcheck = false,whitecheck  = false;
     private double newMouseXa;
     private double newMouseYa;
+    private ImageView[][] imageBlaBla;
 
 
-    public MouseEventHandler_Figures(Node group, Board board) {
+    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] imageBlaBla) {
+        this.imageBlaBla = imageBlaBla;
         this.group = group;
         this.board = board;
     }
@@ -49,7 +52,6 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             mouseY = newMouseY;
         }
         if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
-
             newMouseXa = (int) event.getSceneX() / 10;
             newMouseYa = (int) event.getSceneY() / 10;
             newMouseXa *= 10;
@@ -64,11 +66,11 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             group.setLayoutX(newMouseXa);
             group.setLayoutY(newMouseYa);
 
-
             int newX = (int)(newMouseXa-100)/50;
             int newY = (int)(newMouseYa-100)/50;
             int oldx = Integer.parseInt(group.getId().substring(0,1));
             int oldy = Integer.parseInt(group.getId().substring(1));
+            System.out.println(newY + "" + newX);
 
             if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
 
@@ -83,8 +85,15 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     } else {
                         nextMove = "white";
                     }
+                    for(ImageView[] imageViewArray:imageBlaBla) {
+                        for(ImageView imageView:imageViewArray){
+                            if (imageView!=null && imageView.getId().equals(newY + "" + newX)){
+                                imageView.setVisible(false);
+                                imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,imageBlaBla));
+                            }
+                        }
+                    }
                     group.setId(newY + "" + newX);
-
                 }
             }else {
                 System.out.println("not your Color");
@@ -99,8 +108,6 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                 System.out.println("Check on " + nextMove);
             }
             System.out.println("next to move: " + nextMove);
-
-
         }
     }
 }
