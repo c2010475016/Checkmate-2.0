@@ -14,6 +14,8 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private double startfigX;
     private double startfigY;
     private Boolean blackcheck = false,whitecheck  = false;
+    private double newMouseXa;
+    private double newMouseYa;
 
 
     public MouseEventHandler_Figures(Node group, Board board) {
@@ -47,21 +49,26 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             mouseY = newMouseY;
         }
         if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
-            int newMouseX = (int) event.getSceneX() / 10;
-            int newMouseY = (int) event.getSceneY() / 10;
-            newMouseX *= 10;
-            newMouseY *= 10;
-            while (newMouseX % 50 != 0) {
-                newMouseX -= 10;
+            System.out.println(mouseX + " " + mouseY);
+            newMouseXa = (int) event.getSceneX() / 10;
+            newMouseYa = (int) event.getSceneY() / 10;
+            newMouseXa *= 10;
+            newMouseYa *= 10;
+            System.out.println(newMouseXa + " " + newMouseYa);
+            while (newMouseXa % 50 != 0) {
+                newMouseXa -= 10;
             }
-            while (newMouseY % 50 != 0) {
-                newMouseY -= 10;
+            while (newMouseYa % 50 != 0) {
+                newMouseYa -= 10;
             }
-            group.setLayoutX(newMouseX);
-            group.setLayoutY(newMouseY);
+            System.out.println(newMouseXa + " " + newMouseYa);
 
-            int newX = (newMouseX-100)/50;
-            int newY = (newMouseY-100)/50;
+            group.setLayoutX(newMouseXa);
+            group.setLayoutY(newMouseYa);
+
+            /*
+            int newX = (int)(newMouseXa-100)/50;
+            int newY = (int)(newMouseYa-100)/50;
             int oldx = Integer.parseInt(group.getId().substring(0,1));
             int oldy = Integer.parseInt(group.getId().substring(1));
             System.out.println(newY + "" + newX);
@@ -80,6 +87,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                         nextMove = "white";
                     }
                     group.setId(newY + "" + newX);
+
                 }
             }else {
                 System.out.println("not your Color");
@@ -95,6 +103,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             }
             System.out.println("next to move: " + nextMove);
 
+             */
         }
     }
 }

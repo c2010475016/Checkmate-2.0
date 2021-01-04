@@ -68,15 +68,14 @@ public class Chessboard_FX extends Application {
         Circle[][] circles = new Circle[8][8];
         String resources = new File("./").getAbsolutePath();
         resources = resources.substring(0,resources.length()-2);
-        int groesse_circ = 20;
         for (int i = 0;i<8;i++) {
             if(i==0||i==1||i==6||i==7) {
                 for (int x = 0; x < 8; x++) {
                     Image image2 = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
                     ImageView imageView2 = new ImageView(image2);
 
-                    imageView2.setX(100 + groesse_rect * x);
-                    imageView2.setY(100 + groesse_rect * i);
+                    imageView2.setLayoutX(100 + groesse_rect * x);
+                    imageView2.setLayoutY(100 + groesse_rect * i);
 
                     imageView2.setFitHeight(50);
                     imageView2.setFitWidth(50);
@@ -98,23 +97,6 @@ public class Chessboard_FX extends Application {
                 }
             }
         }
-
-        //String resources = new File("./").getAbsolutePath();
-       // resources = resources.substring(0,resources.length()-2);
-        Image image = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king.jpg"));
-        ImageView imageView = new ImageView(image);
-
-        imageView.setX(50);
-        imageView.setY(50);
-
-        imageView.setFitHeight(40);
-        imageView.setFitWidth(40);
-        imageView.setId("00");
-
-        imageView.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board));
-
-        imageView.setPreserveRatio(true);
-        root.getChildren().addAll(imageView);
 
 
         /*Image image2 = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
