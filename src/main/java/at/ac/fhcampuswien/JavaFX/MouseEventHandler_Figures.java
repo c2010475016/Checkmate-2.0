@@ -57,8 +57,8 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             while (newMouseY % 50 != 0) {
                 newMouseY -= 10;
             }
-            group.setLayoutX(newMouseX + 25);
-            group.setLayoutY(newMouseY + 25);
+            group.setLayoutX(newMouseX);
+            group.setLayoutY(newMouseY);
 
             int newX = (newMouseX-100)/50;
             int newY = (newMouseY-100)/50;
