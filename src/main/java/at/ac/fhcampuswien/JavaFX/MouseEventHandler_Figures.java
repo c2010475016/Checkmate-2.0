@@ -17,11 +17,11 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private Boolean blackcheck = false,whitecheck  = false;
     private double newMouseXa;
     private double newMouseYa;
-    private ImageView[][] imageBlaBla;
+    private ImageView[][] grid;
 
 
-    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] imageBlaBla) {
-        this.imageBlaBla = imageBlaBla;
+    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid) {
+        this.grid = grid;
         this.group = group;
         this.board = board;
     }
@@ -85,11 +85,11 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     } else {
                         nextMove = "white";
                     }
-                    for(ImageView[] imageViewArray:imageBlaBla) {
+                    for(ImageView[] imageViewArray:grid) {
                         for(ImageView imageView:imageViewArray){
                             if (imageView!=null && imageView.getId().equals(newY + "" + newX)){
                                 imageView.setVisible(false);
-                                imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,imageBlaBla));
+                                imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,grid));
                             }
                         }
                     }

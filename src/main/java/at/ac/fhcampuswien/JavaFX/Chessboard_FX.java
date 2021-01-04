@@ -81,7 +81,7 @@ public class Chessboard_FX extends Application {
                             whiteRook.setFitWidth(50);
                             whiteRook.setId(i + "" + x);
                             grid[i][x] = whiteRook;
-                            whiteRook.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteRook, board));
+                            whiteRook.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteRook, board, grid));
                             root.getChildren().addAll(whiteRook);
                         } else if (x == 1 || x == 6) {
                             Image whKn = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/knight_white.png"));
@@ -92,7 +92,7 @@ public class Chessboard_FX extends Application {
                             whiteKnight.setFitWidth(50);
                             whiteKnight.setId(i + "" + x);
                             grid[i][x] = whiteKnight;
-                            whiteKnight.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteKnight, board));
+                            whiteKnight.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteKnight, board, grid));
                             root.getChildren().addAll(whiteKnight);
                         } else if (x == 2 || x == 5) {
                             Image whB = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/phallus_white.png"));
@@ -103,7 +103,7 @@ public class Chessboard_FX extends Application {
                             whiteBishop.setFitWidth(50);
                             whiteBishop.setId(i + "" + x);
                             grid[i][x] = whiteBishop;
-                            whiteBishop.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteBishop, board));
+                            whiteBishop.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteBishop, board, grid));
                             root.getChildren().addAll(whiteBishop);
                         } else if (x == 3){
                             Image whQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_white.png"));
@@ -114,7 +114,7 @@ public class Chessboard_FX extends Application {
                             whiteQueen.setFitWidth(50);
                             whiteQueen.setId(i + "" + x);
                             grid[i][x] = whiteQueen;
-                            whiteQueen.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteQueen, board));
+                            whiteQueen.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteQueen, board, grid));
                             root.getChildren().addAll(whiteQueen);
                         } else {
                             Image whKi = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king_white.png"));
@@ -125,7 +125,7 @@ public class Chessboard_FX extends Application {
                             whiteKing.setFitWidth(50);
                             whiteKing.setId(i + "" + x);
                             grid[i][x] = whiteKing;
-                            whiteKing.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteKing, board));
+                            whiteKing.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whiteKing, board, grid));
                             root.getChildren().addAll(whiteKing);
                         }
                     }
@@ -138,7 +138,7 @@ public class Chessboard_FX extends Application {
                         whitePawn.setFitWidth(50);
                         whitePawn.setId(i + "" + x);
                         grid[i][x] = whitePawn;
-                        whitePawn.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whitePawn, board));
+                        whitePawn.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(whitePawn, board, grid));
                         root.getChildren().addAll(whitePawn);
                     }
                     else if (i == 6){
@@ -150,7 +150,7 @@ public class Chessboard_FX extends Application {
                         blackPawn.setFitWidth(50);
                         blackPawn.setId(i + "" + x);
                         grid[i][x] = blackPawn;
-                        blackPawn.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackPawn, board));
+                        blackPawn.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackPawn, board, grid));
                         root.getChildren().addAll(blackPawn);
                     }
                     else{
@@ -163,7 +163,7 @@ public class Chessboard_FX extends Application {
                             blackRook.setFitWidth(50);
                             blackRook.setId(i + "" + x);
                             grid[i][x] = blackRook;
-                            blackRook.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackRook, board));
+                            blackRook.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackRook, board, grid));
                             root.getChildren().addAll(blackRook);
                         }else if (x == 1 || x == 6) {
                             Image blKn = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/knight_black.png"));
@@ -174,7 +174,7 @@ public class Chessboard_FX extends Application {
                             blackKnight.setFitWidth(50);
                             blackKnight.setId(i + "" + x);
                             grid[i][x] = blackKnight;
-                            blackKnight.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackKnight, board));
+                            blackKnight.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackKnight, board, grid));
                             root.getChildren().addAll(blackKnight);
                         } else if (x == 2 || x == 5) {
                             Image blB = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/phallus_black.png"));
@@ -185,7 +185,7 @@ public class Chessboard_FX extends Application {
                             blackBishop.setFitWidth(50);
                             blackBishop.setId(i + "" + x);
                             grid[i][x] = blackBishop;
-                            blackBishop.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackBishop, board));
+                            blackBishop.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackBishop, board, grid));
                             root.getChildren().addAll(blackBishop);
                         } else if (x == 3){
                             Image blQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_black.png"));
@@ -196,7 +196,7 @@ public class Chessboard_FX extends Application {
                             blackQueen.setFitWidth(50);
                             blackQueen.setId(i + "" + x);
                             grid[i][x] = blackQueen;
-                            blackQueen.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackQueen, board));
+                            blackQueen.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackQueen, board, grid));
                             root.getChildren().addAll(blackQueen);
                         } else {
                             Image blKi = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king_black.png"));
@@ -207,7 +207,7 @@ public class Chessboard_FX extends Application {
                             blackKing.setFitWidth(50);
                             blackKing.setId(i + "" + x);
                             grid[i][x] = blackKing;
-                            blackKing.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackKing, board));
+                            blackKing.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(blackKing, board, grid));
                             root.getChildren().addAll(blackKing);
                         }
                     }
