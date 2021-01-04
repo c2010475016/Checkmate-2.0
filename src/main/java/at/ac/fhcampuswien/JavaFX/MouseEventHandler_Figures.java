@@ -49,29 +49,26 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             mouseY = newMouseY;
         }
         if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
-            System.out.println(mouseX + " " + mouseY);
+
             newMouseXa = (int) event.getSceneX() / 10;
             newMouseYa = (int) event.getSceneY() / 10;
             newMouseXa *= 10;
             newMouseYa *= 10;
-            System.out.println(newMouseXa + " " + newMouseYa);
             while (newMouseXa % 50 != 0) {
                 newMouseXa -= 10;
             }
             while (newMouseYa % 50 != 0) {
                 newMouseYa -= 10;
             }
-            System.out.println(newMouseXa + " " + newMouseYa);
 
             group.setLayoutX(newMouseXa);
             group.setLayoutY(newMouseYa);
 
-            /*
+
             int newX = (int)(newMouseXa-100)/50;
             int newY = (int)(newMouseYa-100)/50;
             int oldx = Integer.parseInt(group.getId().substring(0,1));
             int oldy = Integer.parseInt(group.getId().substring(1));
-            System.out.println(newY + "" + newX);
 
             if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
 
@@ -103,7 +100,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             }
             System.out.println("next to move: " + nextMove);
 
-             */
+
         }
     }
 }
