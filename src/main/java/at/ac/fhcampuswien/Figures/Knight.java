@@ -1,5 +1,9 @@
 package at.ac.fhcampuswien.Figures;
 
+/*
+This class is a subclass of the Figure superclass and implements and uses its methods.
+*/
+
 import at.ac.fhcampuswien.Board;
 
 import java.util.ArrayList;
@@ -7,12 +11,18 @@ import java.util.Arrays;
 
 public class Knight extends Figure {
 
+    /*
+    Constructor for the Figure "Knight" implementing the constructor of the superclass.
+     */
     public Knight(int[] position, String color, Board board) {
 
         super(position, color, board);
     }
 
-    //NEW
+    /*
+    The method getPossibleMoves gets the position of the Figure Knight, checks the valid moves by
+    using the isValidMove method and returns a ArrayList containing all valid moves.
+    */
     @Override
     public ArrayList<int[]> getPossibleMoves(){
         int x = this.getPosition()[0], y = this.getPosition()[1];
@@ -36,18 +46,12 @@ public class Knight extends Figure {
         return knightMoves;
         }
 
+
+    /*
+    Obsolete I guess? Only relevant for console output.
+     */
     @Override
     public String toString() {
         return "[k" + this.getColor().substring(0,1)+ "]";
     }
-
-
-    public static void main(String[] args) {
-        Knight knight = new Knight(new int[]{1,1}, "black", new Board());
-        ArrayList<int[]> test = knight.getPossibleMoves();
-        for (int[] whatever: test) {
-            System.out.println(Arrays.toString(whatever));
-        }
-    }
-
 }

@@ -3,7 +3,7 @@ import at.ac.fhcampuswien.Board;
 import at.ac.fhcampuswien.Player;
 import javafx.application.Application;
 import javafx.application.Platform;
-// import javafx.fxml.FXMLLoader;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -64,13 +64,29 @@ public class Chessboard_FX extends Application {
         }
 
 
+        ImageView[][] imageBlaBla = new ImageView[8][8];
         Circle[][] circles = new Circle[8][8];
-
+        String resources = new File("./").getAbsolutePath();
+        resources = resources.substring(0,resources.length()-2);
         int groesse_circ = 20;
         for (int i = 0;i<8;i++) {
             if(i==0||i==1||i==6||i==7) {
                 for (int x = 0; x < 8; x++) {
-                    Circle r = new Circle(groesse_circ);
+                    Image image2 = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
+                    ImageView imageView2 = new ImageView(image2);
+
+                    imageView2.setX(100 + groesse_rect * x);
+                    imageView2.setY(100 + groesse_rect * i);
+
+                    imageView2.setFitHeight(50);
+                    imageView2.setFitWidth(50);
+                    imageView2.setId(i + "" + x);
+
+                    imageBlaBla[i][x] = imageView2;
+                    imageView2.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView2,board));
+                    root.getChildren().addAll(imageView2);
+
+                    /*Circle r = new Circle(groesse_circ);
                     r.setLayoutX(100 + groesse_rect * x + 25);
                     r.setLayoutY(100 + groesse_rect * i + 25);
                     r.setStroke(Color.BLACK);
@@ -78,13 +94,13 @@ public class Chessboard_FX extends Application {
                     r.setFill(Color.RED);
                     circles[i][x] = r;
                     r.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(r,board));
-                    root.getChildren().addAll(r);
+                    root.getChildren().addAll(r);*/
                 }
             }
         }
 
-        String resources = new File("./").getAbsolutePath();
-        resources = resources.substring(0,resources.length()-2);
+        //String resources = new File("./").getAbsolutePath();
+       // resources = resources.substring(0,resources.length()-2);
         Image image = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king.jpg"));
         ImageView imageView = new ImageView(image);
 
@@ -99,6 +115,23 @@ public class Chessboard_FX extends Application {
 
         imageView.setPreserveRatio(true);
         root.getChildren().addAll(imageView);
+
+
+        /*Image image2 = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
+        ImageView imageView2 = new ImageView(image2);
+
+        imageView2.setX(100);
+        imageView2.setY(50);
+
+        imageView2.setFitHeight(50);
+        imageView2.setFitWidth(50);
+        imageView2.setId("01");
+
+        imageView2.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView2,board));
+
+        imageView2.setPreserveRatio(true);
+        root.getChildren().addAll(imageView2);
+         */
 
 
 

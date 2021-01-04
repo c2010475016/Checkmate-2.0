@@ -1,7 +1,6 @@
 package at.ac.fhcampuswien.Figures;
 
 import at.ac.fhcampuswien.Board;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,11 +17,11 @@ public class Bishop extends Figure{
         for (int a = 1;a>-2;a-=2) {
             for (int b = 1; b > -2; b -= 2) {
                 for (int i = 1; true; i++) {
-                    if (this.board.isValidMove(new int[]{x + (1 * i*a), y + (1 * i*b)}, this.getColor())) {
+                    if (this.board.isValidMove(new int[]{x + (i*a), y + (i*b)}, this.getColor())) {
                         if (this.board.Schachbrett[x+(i*a)][y+(i*b)] == null) {
-                            bishopmoves.add(new int[]{x + (1 * i * a), y + (1 * i * b)});
+                            bishopmoves.add(new int[]{x + (i*a), y + (i *b)});
                         } else {
-                            bishopmoves.add(new int[]{x + (1 * i * a), y + (1 * i * b)});
+                            bishopmoves.add(new int[]{x + (i*a), y + (i*b)});
                             break;
                         }
                     } else {
