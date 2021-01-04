@@ -40,7 +40,6 @@ public class Chessboard_FX extends Application {
         System.out.println(board);
 
 
-
         Group root = new Group();
 
         Rectangle[][] rectangles = new Rectangle[8][8];
@@ -82,7 +81,7 @@ public class Chessboard_FX extends Application {
                     imageView2.setId(i + "" + x);
 
                     imageBlaBla[i][x] = imageView2;
-                    imageView2.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView2,board));
+                    imageView2.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView2,board,imageBlaBla));
                     root.getChildren().addAll(imageView2);
 
                     /*Circle r = new Circle(groesse_circ);
