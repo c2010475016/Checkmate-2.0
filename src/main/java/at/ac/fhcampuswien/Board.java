@@ -68,6 +68,7 @@ public class Board {
 
     }
 
+
     public boolean moveFigure(int[]oldpos,int[]newpos) {
         return this.Schachbrett[oldpos[0]][oldpos[1]].move(newpos);
     }
