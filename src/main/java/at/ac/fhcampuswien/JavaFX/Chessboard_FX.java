@@ -65,7 +65,6 @@ public class Chessboard_FX extends Application {
 
 
         ImageView[][] grid = new ImageView[8][8];
-        Circle[][] circles = new Circle[8][8];
         String resources = new File("./").getAbsolutePath();
         resources = resources.substring(0,resources.length()-2);
         for (int i = 0;i<8;i++) {
@@ -76,7 +75,7 @@ public class Chessboard_FX extends Application {
                             Image whR = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_white.png"));
                             ImageView whiteRook = new ImageView(whR);
                             whiteRook.setLayoutX(100 + groesse_rect * x);
-                            whiteRook.setLayoutY(100 + groesse_rect * i);   //wahrscheinlich gehts auch ohne!
+                            whiteRook.setLayoutY(100);
                             whiteRook.setFitHeight(50);
                             whiteRook.setFitWidth(50);
                             whiteRook.setId(i + "" + x);
@@ -87,7 +86,7 @@ public class Chessboard_FX extends Application {
                             Image whKn = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/knight_white.png"));
                             ImageView whiteKnight = new ImageView(whKn);
                             whiteKnight.setLayoutX(100 + groesse_rect * x);
-                            whiteKnight.setLayoutY(100 + groesse_rect * i);
+                            whiteKnight.setLayoutY(100);
                             whiteKnight.setFitHeight(50);
                             whiteKnight.setFitWidth(50);
                             whiteKnight.setId(i + "" + x);
@@ -98,7 +97,7 @@ public class Chessboard_FX extends Application {
                             Image whB = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/phallus_white.png"));
                             ImageView whiteBishop = new ImageView(whB);
                             whiteBishop.setLayoutX(100 + groesse_rect * x);
-                            whiteBishop.setLayoutY(100 + groesse_rect * i);
+                            whiteBishop.setLayoutY(100);
                             whiteBishop.setFitHeight(50);
                             whiteBishop.setFitWidth(50);
                             whiteBishop.setId(i + "" + x);
@@ -109,7 +108,7 @@ public class Chessboard_FX extends Application {
                             Image whQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_white.png"));
                             ImageView whiteQueen = new ImageView(whQ);
                             whiteQueen.setLayoutX(100 + groesse_rect * x);
-                            whiteQueen.setLayoutY(100 + groesse_rect * i);
+                            whiteQueen.setLayoutY(100);
                             whiteQueen.setFitHeight(50);
                             whiteQueen.setFitWidth(50);
                             whiteQueen.setId(i + "" + x);
@@ -120,7 +119,7 @@ public class Chessboard_FX extends Application {
                             Image whKi = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king_white.png"));
                             ImageView whiteKing = new ImageView(whKi);
                             whiteKing.setLayoutX(100 + groesse_rect * x);
-                            whiteKing.setLayoutY(100 + groesse_rect * i);
+                            whiteKing.setLayoutY(100);
                             whiteKing.setFitHeight(50);
                             whiteKing.setFitWidth(50);
                             whiteKing.setId(i + "" + x);
@@ -211,52 +210,9 @@ public class Chessboard_FX extends Application {
                             root.getChildren().addAll(blackKing);
                         }
                     }
-
-
-                    /*Image image2 = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
-                    ImageView imageView2 = new ImageView(image2);
-
-                    imageView2.setLayoutX(100 + groesse_rect * x);
-                    imageView2.setLayoutY(100 + groesse_rect * i);
-
-                    imageView2.setFitHeight(50);
-                    imageView2.setFitWidth(50);
-                    imageView2.setId(i + "" + x);
-
-                    grid[i][x] = imageView2;
-                    imageView2.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView2,board));
-                    root.getChildren().addAll(imageView2);*/
-
-                    /*Circle r = new Circle(groesse_circ);
-                    r.setLayoutX(100 + groesse_rect * x + 25);
-                    r.setLayoutY(100 + groesse_rect * i + 25);
-                    r.setStroke(Color.BLACK);
-                    r.setId(i + "" + x);
-                    r.setFill(Color.RED);
-                    circles[i][x] = r;
-                    r.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(r,board));
-                    root.getChildren().addAll(r);*/
                 }
             }
         }
-
-
-        /*Image image2 = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
-        ImageView imageView2 = new ImageView(image2);
-
-        imageView2.setX(100);
-        imageView2.setY(50);
-
-        imageView2.setFitHeight(50);
-        imageView2.setFitWidth(50);
-        imageView2.setId("01");
-
-        imageView2.addEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView2,board));
-
-        imageView2.setPreserveRatio(true);
-        root.getChildren().addAll(imageView2);
-         */
-
 
 
         Scene scene = new Scene(root, BOARD_SIZE, BOARD_SIZE);
