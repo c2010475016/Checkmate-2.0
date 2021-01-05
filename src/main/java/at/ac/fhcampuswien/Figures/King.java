@@ -37,7 +37,7 @@ public class King extends Figure{
         boolean rochardevar =this.getColor().equals("white");
 
         if (this.board.isValidMove(new int[]{x, y + (2)}, this.getColor()) &&
-                ((rochardevar && x == 0) || (!rochardevar && x == 7)) &&
+                ((rochardevar && x == 0) || (!rochardevar && x == 7)) && y == 4 &&
                 this.board.Schachbrett[x][y + (1)] == null &&
                 this.board.Schachbrett[x][y + (2)] == null &&
                 this.board.Schachbrett[x][y + (3)] != null &&
@@ -45,13 +45,13 @@ public class King extends Figure{
             kingMoves.add(new int[]{x, y + (2)});
         }
         if (this.board.isValidMove(new int[]{x, y - (2)}, this.getColor()) &&
-                ((rochardevar && x == 0) || (!rochardevar && x == 7)) &&
+                ((rochardevar && x == 0) || (!rochardevar && x == 7)) &&  y == 4 &&
                 this.board.Schachbrett[x][y - (1)] == null &&
                 this.board.Schachbrett[x][y - (2)] == null &&
                 this.board.Schachbrett[x][y - (3)] == null &&
                 this.board.Schachbrett[x][y - (4)] != null &&
                 ((this.board.Schachbrett[x][y - (4)]).getClass().getSimpleName().equals("Rook"))) {
-            kingMoves.add(new int[]{x, y - (4)});
+            kingMoves.add(new int[]{x, y - (2)});
         }
 
 

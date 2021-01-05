@@ -80,9 +80,9 @@ public class Figure {
                 }
                 if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
                         oldPos[1]-2 == this.position[1]){
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1] = this.board.Schachbrett[oldPos[0]][oldPos[1]+4];
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1].setPosition(new int[]{oldPos[0],oldPos[1]+1});
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]+4] = null;
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]-1] = this.board.Schachbrett[oldPos[0]][oldPos[1]-4];
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]-1].setPosition(new int[]{oldPos[0],oldPos[1]-1});
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]-4] = null;
 
                 }
 

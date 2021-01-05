@@ -94,6 +94,25 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                         }
                     }
                     group.setId(newY + "" + newX);
+
+                    int coloradder = 0;
+                    if(nextMove.equals("white")){
+                        coloradder+=7;
+                    }
+                    //rocharde
+                    if(grid[coloradder][4].getId().equals(group.getId()) && oldy+2 == newX) {
+                        grid[coloradder][7].setLayoutX(startfigX+50);
+                        grid[coloradder][7].setLayoutY(startfigY);
+                        grid[coloradder][7].setId(coloradder + "5");
+                    }
+                    if(grid[coloradder][4].getId().equals(group.getId()) && oldy-2 == newX) {
+                        grid[coloradder][0].setLayoutX(startfigX-50);
+                        grid[coloradder][0].setLayoutY(startfigY);
+                        grid[coloradder][0].setId(coloradder + "3");
+                    }
+
+
+
                 }
             }else {
                 System.out.println("not your Color");
