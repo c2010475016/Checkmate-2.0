@@ -85,6 +85,15 @@ public class Figure {
                     this.board.Schachbrett[oldPos[0]][oldPos[1]-4] = null;
 
                 }
+                //bauer zu queen
+                if (this.getClass().getSimpleName().equals("Pawn")) {
+                    if(this.getColor().equals("white") && this.position[0] == 7){
+                        this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[] {position[0],position[1]},"white",this.board);
+                    }
+                    if(this.getColor().equals("black") && this.position[0] == 0){
+                        this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[] {position[0],position[1]},"black",this.board);
+                    }
+                }
 
                 return true;
             }

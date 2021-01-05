@@ -3,8 +3,13 @@ package at.ac.fhcampuswien.JavaFX;;
 import at.ac.fhcampuswien.Board;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static String nextMove = "white";
@@ -18,12 +23,23 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private double newMouseXa;
     private double newMouseYa;
     private ImageView[][] grid;
+    private String resources = new File("./").getAbsolutePath();
+    private Image whQ = null;
+    private Image blQ = null;
+
 
 
     public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid) {
         this.grid = grid;
         this.group = group;
         this.board = board;
+        resources = resources.substring(0,resources.length()-2);
+        try {
+            whQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_white.png"));
+            blQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_black.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -110,6 +126,20 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                         grid[coloradder][0].setLayoutY(startfigY);
                         grid[coloradder][0].setId(coloradder + "3");
                     }
+
+                    //bauer zu queen
+                    for (ImageView imageView:grid[1]){
+                        if (imageView.getId().substring(0,1).equals("7")){
+                            imageView.setImage(whQ);
+                        }
+                    }
+
+                    for (ImageView imageView:grid[6]){
+                        if (imageView.getId().substring(0,1).equals("0")){
+                            imageView.setImage(blQ);
+                        }
+                    }
+
 
 
 
