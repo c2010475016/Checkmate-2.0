@@ -69,6 +69,23 @@ public class Figure {
                 this.board.Schachbrett[position[0]][position[1]] = this.board.Schachbrett[this.position[0]][this.position[1]];
                 this.board.Schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
                 this.board.Schachbrett[oldPos[0]][oldPos[1]] = null;
+
+                //rocharde
+                if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
+                oldPos[1]+2 == this.position[1]){
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1] = this.board.Schachbrett[oldPos[0]][oldPos[1]+3];
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1].setPosition(new int[]{oldPos[0],oldPos[1]+1});
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]+3] = null;
+
+                }
+                if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
+                        oldPos[1]-2 == this.position[1]){
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1] = this.board.Schachbrett[oldPos[0]][oldPos[1]+4];
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1].setPosition(new int[]{oldPos[0],oldPos[1]+1});
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]+4] = null;
+
+                }
+
                 return true;
             }
         }
