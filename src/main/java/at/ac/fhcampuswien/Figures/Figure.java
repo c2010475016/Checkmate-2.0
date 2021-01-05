@@ -39,8 +39,8 @@ public class Figure {
     public boolean move(int[]position){
         int[] oldPos = this.position;
         ArrayList<int[]> moves = getPossibleMoves();
-        for (int[] whatever: moves) {
-            System.out.println(Arrays.toString(whatever));
+        for (int[] move: moves) {
+            System.out.println(Arrays.toString(move));
         }
         for (int[] move: moves){
             if (move[0] == position[0] && move[1] == position[1]){

@@ -12,7 +12,6 @@ public class King extends Figure{
     }
 
 
-    //NEW
     @Override
     public ArrayList<int[]> getPossibleMoves(){
         int x = this.getPosition()[0], y = this.getPosition()[1];
@@ -36,16 +35,9 @@ public class King extends Figure{
         return kingMoves;
     }
 
+
     @Override
     public String toString() {
         return "[K" + this.getColor().substring(0,1)+ "]";
-    }
-
-    public static void main(String[] args) {
-        King king = new King(new int[]{1,1}, "black", new Board());
-        ArrayList<int[]> test = king.getPossibleMoves();
-        for (int[] whatever: test) {
-            System.out.println(Arrays.toString(whatever));
-        }
     }
 }

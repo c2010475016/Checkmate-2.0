@@ -10,6 +10,7 @@ public class Rook extends Figure {
         super(position, color,board);
     }
 
+
     @Override
     public ArrayList<int[]> getPossibleMoves() {
         int x = this.getPosition()[0], y = this.getPosition()[1];
@@ -49,6 +50,3 @@ public class Rook extends Figure {
         return "[R" + this.getColor().substring(0,1) + "]";
     }
 }
-
-
-//  && (this.board.Schachbrett[x+i][y] != null && this.board.Schachbrett[x+i][y].getColor().equals(this.board.Schachbrett[x][y].getColor()))

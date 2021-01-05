@@ -14,8 +14,4 @@ public class Player {
 
     public String getColor() { return color; }
     public String getName() { return name; }
-
-    /* Spieler als Objekt? Mit Eigenschaften Farbe, Spieler am Zug?
-    Überblick über geschlagene Figuren? Wenn Bauer am Ende vom Feld, dann darf er gegen geschlagene Figur ausgetauscht werden
-     */
 }
