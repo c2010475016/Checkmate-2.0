@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Figure {
+public class Figure implements Cloneable {
     private int[] position = new int[2];
     private String color;
     public Board board;
@@ -15,6 +15,11 @@ public class Figure {
         this.position = position;
         this.color = color;
         this.board = board;
+    }
+
+    public Figure clone() {
+        Figure figure = new Figure(this.position,this.color,this.board);
+        return figure;
     }
 
     public int[] getPosition() {
@@ -46,17 +51,28 @@ public class Figure {
             if (move[0] == position[0] && move[1] == position[1]){
                 System.out.println(this.position[0] + " " + this.position[1]+ " " +position[0]+ " " +position[1]);
 
-                /* noch in der Testphase
-                Figure[][] test_schachbrett = this.board.Schachbrett;
+                /*- noch in der Testphase
+                Figure[][] test_schachbrett = new Figure[8][8];
+                for (int i = 0;i<8;i++){
+                    for (int x = 0;x<8;x++){
+                        if (this.board.Schachbrett[i][x] != null){
+                            test_schachbrett[i][x] = this.board.Schachbrett[i][x].clone();
+                        }
+                    }
+                }
+
                 test_schachbrett[position[0]][position[1]] = test_schachbrett[this.position[0]][this.position[1]];
                 test_schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
                 test_schachbrett[oldPos[0]][oldPos[1]] = null;
                 Board testboard = new Board();
                 testboard.Schachbrett = test_schachbrett;
+                System.out.println(testboard.toString());
                 if (testboard.isCheck(this.color)){
-                    invalidMove(true);
-                    return;
-                } */
+                    System.out.println(testboard);
+                    return false;
+                }
+
+                */
 
                 if (this.board.Schachbrett[position[0]][position[1]] != null) {
                     System.out.println("gegnerischen Figur geschlagen!");

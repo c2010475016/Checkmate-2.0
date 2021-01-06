@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+
+//Klasse ist nur zu Testzwecken
 public class Game {
     Board board;
     Player player1;
