@@ -31,6 +31,7 @@ public class Board {
         //resetBoard();
     }
 
+
     public void resetBoard(){
         for (int i = 0;i<Schachbrett.length;i++) {
             if (i == 1) {
@@ -132,7 +133,34 @@ public class Board {
     }
 
     public boolean isCheckmate(String color){
-        return false;
+        for(Figure[] figures:this.Schachbrett){
+            for (Figure figure:figures) {
+                if (figure != null && figure.getColor().equals(color)){
+                    if (figure.getPossibleMoves().size() != 0){
+                        for (int[] move:figure.getPossibleMoves()){
+                            int[] oldPos = figure.getPosition();
+                            int[] position = move;
+                            Figure geschlagen = this.Schachbrett[position[0]][position[1]];
+
+                            this.Schachbrett[position[0]][position[1]] = this.Schachbrett[oldPos[0]][oldPos[1]];
+                            this.Schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
+                            this.Schachbrett[oldPos[0]][oldPos[1]] = null;
+                            if (!isCheck(color)){
+                                this.Schachbrett[oldPos[0]][oldPos[1]] = this.Schachbrett[position[0]][position[1]];
+                                this.Schachbrett[oldPos[0]][oldPos[1]].setPosition(new int[]{oldPos[0],oldPos[1]});
+                                this.Schachbrett[position[0]][position[1]] = geschlagen;
+                                return false;
+                            }
+
+                            this.Schachbrett[oldPos[0]][oldPos[1]] = this.Schachbrett[position[0]][position[1]];
+                            this.Schachbrett[oldPos[0]][oldPos[1]].setPosition(new int[]{oldPos[0],oldPos[1]});
+                            this.Schachbrett[position[0]][position[1]] = geschlagen;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 

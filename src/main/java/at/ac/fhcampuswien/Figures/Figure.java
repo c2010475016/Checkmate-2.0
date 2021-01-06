@@ -2,6 +2,7 @@ package at.ac.fhcampuswien.Figures;
 
 import at.ac.fhcampuswien.Board;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -17,10 +18,6 @@ public class Figure implements Cloneable {
         this.board = board;
     }
 
-    public Figure clone() {
-        Figure figure = new Figure(this.position,this.color,this.board);
-        return figure;
-    }
 
     public int[] getPosition() {
         return position;
@@ -51,29 +48,6 @@ public class Figure implements Cloneable {
             if (move[0] == position[0] && move[1] == position[1]){
                 System.out.println(this.position[0] + " " + this.position[1]+ " " +position[0]+ " " +position[1]);
 
-                /*- noch in der Testphase
-                Figure[][] test_schachbrett = new Figure[8][8];
-                for (int i = 0;i<8;i++){
-                    for (int x = 0;x<8;x++){
-                        if (this.board.Schachbrett[i][x] != null){
-                            test_schachbrett[i][x] = this.board.Schachbrett[i][x].clone();
-                        }
-                    }
-                }
-
-                test_schachbrett[position[0]][position[1]] = test_schachbrett[this.position[0]][this.position[1]];
-                test_schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
-                test_schachbrett[oldPos[0]][oldPos[1]] = null;
-                Board testboard = new Board();
-                testboard.Schachbrett = test_schachbrett;
-                System.out.println(testboard.toString());
-                if (testboard.isCheck(this.color)){
-                    System.out.println(testboard);
-                    return false;
-                }
-
-                */
-
                 if (this.board.Schachbrett[position[0]][position[1]] != null) {
                     System.out.println("gegnerischen Figur geschlagen!");
                     if(this.board.Schachbrett[position[0]][position[1]].color.equals("white")){
@@ -86,32 +60,41 @@ public class Figure implements Cloneable {
                 this.board.Schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
                 this.board.Schachbrett[oldPos[0]][oldPos[1]] = null;
 
-                //rocharde
-                if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
-                oldPos[1]+2 == this.position[1]){
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1] = this.board.Schachbrett[oldPos[0]][oldPos[1]+3];
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]+1].setPosition(new int[]{oldPos[0],oldPos[1]+1});
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]+3] = null;
+                //aus Schach muss sich raus bewegt werden
+                if(board.isCheck(this.color)){
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]] = this.board.Schachbrett[position[0]][position[1]];
+                    this.board.Schachbrett[oldPos[0]][oldPos[1]].setPosition(new int[]{oldPos[0],oldPos[1]});
+                    this.board.Schachbrett[position[0]][position[1]] = null;
+                    return false;
+                }else {
 
-                }
-                if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
-                        oldPos[1]-2 == this.position[1]){
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]-1] = this.board.Schachbrett[oldPos[0]][oldPos[1]-4];
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]-1].setPosition(new int[]{oldPos[0],oldPos[1]-1});
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]-4] = null;
+                    //rocharde
+                    if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
+                            oldPos[1] + 2 == this.position[1]) {
+                        this.board.Schachbrett[oldPos[0]][oldPos[1] + 1] = this.board.Schachbrett[oldPos[0]][oldPos[1] + 3];
+                        this.board.Schachbrett[oldPos[0]][oldPos[1] + 1].setPosition(new int[]{oldPos[0], oldPos[1] + 1});
+                        this.board.Schachbrett[oldPos[0]][oldPos[1] + 3] = null;
 
-                }
-                //bauer zu queen
-                if (this.getClass().getSimpleName().equals("Pawn")) {
-                    if(this.getColor().equals("white") && this.position[0] == 7){
-                        this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[] {position[0],position[1]},"white",this.board);
                     }
-                    if(this.getColor().equals("black") && this.position[0] == 0){
-                        this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[] {position[0],position[1]},"black",this.board);
-                    }
-                }
+                    if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
+                            oldPos[1] - 2 == this.position[1]) {
+                        this.board.Schachbrett[oldPos[0]][oldPos[1] - 1] = this.board.Schachbrett[oldPos[0]][oldPos[1] - 4];
+                        this.board.Schachbrett[oldPos[0]][oldPos[1] - 1].setPosition(new int[]{oldPos[0], oldPos[1] - 1});
+                        this.board.Schachbrett[oldPos[0]][oldPos[1] - 4] = null;
 
-                return true;
+                    }
+                    //bauer zu queen
+                    if (this.getClass().getSimpleName().equals("Pawn")) {
+                        if (this.getColor().equals("white") && this.position[0] == 7) {
+                            this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "white", this.board);
+                        }
+                        if (this.getColor().equals("black") && this.position[0] == 0) {
+                            this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "black", this.board);
+                        }
+                    }
+
+                    return true;
+                }
             }
         }
         return false;

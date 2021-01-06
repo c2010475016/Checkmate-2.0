@@ -86,7 +86,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             int newY = (int)(newMouseYa-100)/50;
             int oldx = Integer.parseInt(group.getId().substring(0,1));
             int oldy = Integer.parseInt(group.getId().substring(1));
-            System.out.println(newY + "" + newX);
+            System.out.println(oldx + "" + oldy);
 
             if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
 
@@ -152,7 +152,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
 
             if (board.isCheck(nextMove)){
                 if (board.isCheckmate(nextMove)){
-
+                    System.out.println("Game Over");
                 }
                 System.out.println("Check on " + nextMove);
             }
