@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,6 +31,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private Image blQ = null;
     private static int whiteGraveyardXPosition = 100;
     private static int blackGraveyardXPosition = 100;
+    private Label gameOver;
 
 
     /**
@@ -38,10 +40,11 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
      * @param board
      * @param grid
      */
-    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid) {
+    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid, Label label) {
         this.grid = grid;
         this.group = group;
         this.board = board;
+        this.gameOver = label;
         resources = resources.substring(0,resources.length()-2);
         try {
             whQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_white.png"));
@@ -127,7 +130,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                                     imageView.setFitWidth(25);
                                     whiteGraveyardXPosition = whiteGraveyardXPosition + 25;
                                 }
-                                imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,grid));
+                                imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,grid,gameOver));
                             }
                         }
                     }
@@ -174,7 +177,8 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
 
             if (board.isCheck(nextMove)){
                 if (board.isCheckmate(nextMove)){
-                    System.out.println("Game Over");
+                    gameOver.setVisible(true);
+                    System.out.println("Game over!");
                 }
                 System.out.println("Check on " + nextMove);
             }
