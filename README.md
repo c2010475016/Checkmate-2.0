@@ -13,7 +13,7 @@
 
 
 ### Noch nicht implementierte Features:
-[ ] Start-Screen (evtl. mit Optionen und Namenseingabe).
-[ ] Game Over Screen.
-[ ] 1-8 und A-H am Rand des Spielfelds anzeigen.
-[ ] Friedhof mit allen geschlagenen Figuren anzeigen.
+- [ ] Start-Screen (evtl. mit Optionen und Namenseingabe).
+- [ ] Game Over Screen.
+- [ ] 1-8 und A-H am Rand des Spielfelds anzeigen.
+- [ ] Friedhof mit allen geschlagenen Figuren anzeigen.
