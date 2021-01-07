@@ -61,6 +61,7 @@ public class Chessboard_FX extends Application {
         gameOver.setVisible(false);
         gameOver.setText("Game over!");
         gameOver.setFont(Font.font(50));
+        gameOver.setTextFill(Color.web("#ffffff"));
         gameOver.setLayoutX(170);
         gameOver.setLayoutY(250);
         gameOver.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, 1), new CornerRadii(5.0), new Insets(-5.0))));
