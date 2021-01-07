@@ -6,7 +6,7 @@
 ### Implementierte Features:
 - [x] Aufteilung des Codes in Super-/Subklassen für bessere Übersichtlichkeit.
 - [x] Code-Grundgerüst und funktionsfähige Konsolenvariante.
-- [x] Alle Schachregeln implementiert (inkl. Rochade und Bauerntausch)
+- [x] Alle Schachregeln implementiert (inkl. Schach/Schachmatt, Rochade und Bauerntausch)
 - [x] Verknüpfung des Grundgerüsts mit visuellen JavaFX-Features (Figuren-Klassen sind mit visuellen Objekten verknüpft).
 - [x] Mouse Handler konfiguriert.
 - [x] Selbst gezeichnete Figuren.
