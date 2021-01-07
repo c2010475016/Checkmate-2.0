@@ -1,4 +1,9 @@
 package at.ac.fhcampuswien.JavaFX;
+
+/**
+ * Class to define board and Chess Piece appearances in JavaFX.
+ */
+
 import at.ac.fhcampuswien.Board;
 import at.ac.fhcampuswien.Player;
 import javafx.application.Application;
@@ -25,7 +30,9 @@ public class Chessboard_FX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
+        /**
+         * Setup for new Game
+         */
         Board board;
         Player player1;
         Player player2;
@@ -43,6 +50,9 @@ public class Chessboard_FX extends Application {
 
         Group root = new Group();
 
+        /**
+         * Creates classic Chess Board pattern consisting of black and white squares.
+         */
         Rectangle[][] rectangles = new Rectangle[8][8];
 
         int groesse_rect = 50;
@@ -63,7 +73,9 @@ public class Chessboard_FX extends Application {
             }
         }
 
-
+        /**
+         * Sets path for icon ressources for black and white Chess Pieces (Drawn by the infamous Joseph Hangstein)
+         */
         ImageView[][] grid = new ImageView[8][8];
         String resources = new File("./").getAbsolutePath();
         resources = resources.substring(0,resources.length()-2);
@@ -217,6 +229,9 @@ public class Chessboard_FX extends Application {
 
         Scene scene = new Scene(root, BOARD_SIZE, BOARD_SIZE);
 
+        /**
+         * Press "q" to quit the game. Recognizes "q" keystroke and exits.
+         */
         scene.addEventHandler(KeyEvent.KEY_PRESSED, e -> {
             if(e.getCode().equals(KeyCode.Q)){
                 Platform.exit();

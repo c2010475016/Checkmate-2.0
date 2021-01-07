@@ -1,5 +1,9 @@
 package at.ac.fhcampuswien.Figures;
 
+/**
+ * "Figure" Superclass.
+ */
+
 import at.ac.fhcampuswien.Board;
 
 import java.sql.SQLOutput;
@@ -12,32 +16,52 @@ public class Figure implements Cloneable {
     private String color;
     public Board board;
 
+    /**
+     * Constructor for the Object "Figure".
+     * @param position
+     * @param color
+     * @param board
+     */
     public Figure(int[] position, String color, Board board) {
         this.position = position;
         this.color = color;
         this.board = board;
     }
 
-
+    /**
+     * Getter for current position.
+     * @return Current position in the position Array.
+     */
     public int[] getPosition() {
         return position;
     }
 
+    /**
+     * Setter for new position to be written in the position Array.
+     * @param position Position Array.
+     */
     public void setPosition(int[] position) {
         this.position = position;
     }
 
 
-
+    /**
+     * Getter for the color of the requested Figure.
+     * @return Color.
+     */
     public String getColor() {
         return color;
     }
 
+    /**
+     * Setter for the color.
+     * @param color
+     */
     public void setColor(String color) {
         this.color = color;
     }
 
-    //fehlt: falls nach dem move noch immer Schah besteht -> invalid move
+    //fehlt: falls nach dem move noch immer Schach besteht -> invalid move
     public boolean move(int[]position){
         int[] oldPos = this.position;
         ArrayList<int[]> moves = getPossibleMoves();
@@ -100,7 +124,9 @@ public class Figure implements Cloneable {
         return false;
     }
 
-
+    /**
+     * initialisation of getPossibleMoves method.
+     */
     public ArrayList<int[]> getPossibleMoves(){
         return null;
     }

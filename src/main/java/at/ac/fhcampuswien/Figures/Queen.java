@@ -1,20 +1,38 @@
 package at.ac.fhcampuswien.Figures;
 
+/*
+  This class is a subclass of the Figure superclass and implements and uses its methods.
+ */
+
 import at.ac.fhcampuswien.Board;
 
 import java.util.ArrayList;
 
 public class Queen extends Figure {
 
+    /**
+     * Constructor for the Figure "Queen" implementing the constructor of the superclass.
+     * @param position
+     * @param color
+     * @param board
+     */
     public Queen (int[] position, String color, Board board) {
         super(position, color,board);
     }
 
+    /**
+     * ToString Method to tag Chess Pieces on the Board in the Console.
+     * @return Letter for type of figure plus color of the figure.
+     */
     @Override
     public String toString() {
         return "[Q" + this.getColor().substring(0,1)+ "]";
     }
 
+    /**
+     * The method getPossibleMoves gets the position of the Figure Queen and checks the valid moves by using the isValidMove method.
+     * @return Returns ArrayList containing all possible valid moves.
+     */
     public ArrayList<int[]> getPossibleMoves(){
         int x = this.getPosition()[0], y = this.getPosition()[1];
         ArrayList<int[]> queenMoves = new ArrayList<int[]>();
