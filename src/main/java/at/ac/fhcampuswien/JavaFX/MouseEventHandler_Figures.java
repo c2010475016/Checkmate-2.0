@@ -1,6 +1,7 @@
 package at.ac.fhcampuswien.JavaFX;;
 
 import at.ac.fhcampuswien.Board;
+import at.ac.fhcampuswien.Figures.Figure;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -10,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static String nextMove = "white";
@@ -26,6 +28,8 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private String resources = new File("./").getAbsolutePath();
     private Image whQ = null;
     private Image blQ = null;
+    private static int whiteGraveyardXPosition = 100;
+    private static int blackGraveyardXPosition = 100;
 
 
     /**
@@ -109,7 +113,20 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     for(ImageView[] imageViewArray:grid) {
                         for(ImageView imageView:imageViewArray){
                             if (imageView!=null && imageView.getId().equals(newY + "" + newX)){
-                                imageView.setVisible(false);
+                                imageView.setId("beaten");
+                                if(nextMove.equals("black")){
+                                    imageView.setLayoutX(blackGraveyardXPosition);
+                                    imageView.setLayoutY(500);
+                                    imageView.setFitHeight(25);
+                                    imageView.setFitWidth(25);
+                                    blackGraveyardXPosition = blackGraveyardXPosition + 25;
+                                } else {
+                                    imageView.setLayoutX(whiteGraveyardXPosition);
+                                    imageView.setLayoutY(75);
+                                    imageView.setFitHeight(25);
+                                    imageView.setFitWidth(25);
+                                    whiteGraveyardXPosition = whiteGraveyardXPosition + 25;
+                                }
                                 imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,grid));
                             }
                         }
