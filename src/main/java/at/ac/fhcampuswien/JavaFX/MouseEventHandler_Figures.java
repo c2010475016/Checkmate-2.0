@@ -28,7 +28,12 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private Image blQ = null;
 
 
-
+    /**
+     * Constructor for JavaFX Figures.
+     * @param group
+     * @param board
+     * @param grid
+     */
     public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid) {
         this.grid = grid;
         this.group = group;
@@ -58,8 +63,8 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
            System.out.println(group.getId());
         }
         if (event.getEventType() == MouseEvent.MOUSE_DRAGGED) {
-            double newMouseX = event.getSceneX();
-            double newMouseY = event.getSceneY();
+            int newMouseX = (int) event.getSceneX();
+            int newMouseY = (int) event.getSceneY();
             double deltaX = newMouseX - mouseX;
             double deltaY = newMouseY - mouseY;
             group.setLayoutX(group.getLayoutX() + deltaX);

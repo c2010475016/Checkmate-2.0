@@ -1,7 +1,7 @@
 package at.ac.fhcampuswien.Figures;
 
-/*
-  This class is a subclass of the Figure superclass and implements and uses its methods.
+/**
+ * This class is a subclass of the Figure superclass and implements and uses its methods.
  */
 
 import at.ac.fhcampuswien.Board;

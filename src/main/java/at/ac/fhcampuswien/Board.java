@@ -11,18 +11,34 @@ public class Board {
     private ArrayList<Figure> whiteGraveyard = new ArrayList<Figure>();
     private ArrayList<Figure> blackGraveyard = new ArrayList<Figure>();
 
+    /**
+     * Getter for the white graveyard.
+     * @return
+     */
     public ArrayList<Figure> getWhiteGraveyard() {
         return whiteGraveyard;
     }
 
+    /**
+     * Getter for the black graveyard.
+     * @return
+     */
     public ArrayList<Figure> getBlackGraveyard() {
         return blackGraveyard;
     }
 
+    /**
+     * Setter for the white graveyard.
+     * @param figure adds Figure to the graveyard.
+     */
     public void setWhiteGraveyard(Figure figure) {
         this.whiteGraveyard.add(figure);
     }
 
+    /**
+     * Setter for the black graveyard.
+     * @param figure adds Figure to the graveyard.
+     */
     public void setBlackGraveyard(Figure figure) {
         this.blackGraveyard.add(figure);
     }
@@ -31,7 +47,9 @@ public class Board {
         //resetBoard();
     }
 
-
+    /**
+     * Resets the board and places all chess pieces on their respective starting position.
+     */
     public void resetBoard(){
         for (int i = 0;i<Schachbrett.length;i++) {
             if (i == 1) {
@@ -69,11 +87,22 @@ public class Board {
 
     }
 
-
+    /**
+     * Method to move chess pieces using the command window.
+     * @param oldpos the old position
+     * @param newpos the new position
+     * @return
+     */
     public boolean moveFigure(int[]oldpos,int[]newpos) {
         return this.Schachbrett[oldpos[0]][oldpos[1]].move(newpos);
     }
 
+    /**
+     * Method to check if a move is valid (Out of bounds, same color)
+     * @param move
+     * @param color
+     * @return
+     */
     public boolean isValidMove(int[]move, String color){
         if (move[0] < 0 || move[0] > 7 || move[1] < 0 || move[1] > 7)
             return false;
@@ -84,6 +113,11 @@ public class Board {
         return true;
     }
 
+    /**
+     * Gets current position of the King.
+     * @param color
+     * @return Posotion
+     */
     public int[] getKing(String color) {
         for(Figure[] line:Schachbrett){
             for(Figure figure:line){
@@ -96,7 +130,10 @@ public class Board {
     }
 
 
-
+    /**
+     * Prints Board in command line.
+     * @return String to print.
+     */
     @Override
     public String toString() {
         String result = "";
@@ -116,6 +153,11 @@ public class Board {
         return result;
     }
 
+    /**
+     * Method to assess if the King is in Check.
+     * @param color
+     * @return
+     */
     public boolean isCheck(String color){
         int[] king = getKing(color);
         for(Figure[] line:Schachbrett){
@@ -132,6 +174,11 @@ public class Board {
         return false;
     }
 
+    /**
+     * Method to assess if there is a Checkmate.
+     * @param color
+     * @return
+     */
     public boolean isCheckmate(String color){
         for(Figure[] figures:this.Schachbrett){
             for (Figure figure:figures) {

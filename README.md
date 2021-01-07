@@ -1,6 +1,6 @@
 # Checkmate-2.0
 ### Projektarbeit CSDC WS 2020 Prog1
-###### Tobias König, René Günes, Joseph Hangstein
+###### Tobias König, Rene Günes, Joseph Hangstein
 
 
 ### Implementierte Features:
