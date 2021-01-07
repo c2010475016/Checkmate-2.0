@@ -9,18 +9,25 @@ import at.ac.fhcampuswien.Player;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 
@@ -52,8 +59,13 @@ public class Chessboard_FX extends Application {
 
         Label gameOver = new Label("Game over!");
         gameOver.setVisible(false);
-        gameOver.setSize(500, 500);
         gameOver.setText("Game over!");
+        gameOver.setFont(Font.font(50));
+        gameOver.setLayoutX(170);
+        gameOver.setLayoutY(250);
+        gameOver.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, 1), new CornerRadii(5.0), new Insets(-5.0))));
+        root.getChildren().addAll(gameOver);
+
         /**
          * Creates classic Chess Board pattern consisting of black and white squares.
          */

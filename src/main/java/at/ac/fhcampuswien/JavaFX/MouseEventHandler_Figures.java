@@ -4,11 +4,11 @@ import at.ac.fhcampuswien.Board;
 import at.ac.fhcampuswien.Figures.Figure;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -178,6 +178,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             if (board.isCheck(nextMove)){
                 if (board.isCheckmate(nextMove)){
                     gameOver.setVisible(true);
+                    gameOver.toFront();
                     System.out.println("Game over!");
                 }
                 System.out.println("Check on " + nextMove);
