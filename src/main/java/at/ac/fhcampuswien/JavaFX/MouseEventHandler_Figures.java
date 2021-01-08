@@ -38,7 +38,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
      * Constructor for JavaFX Figures.
      * @param group
      * @param board
-     * @param grid
+     * @param grid Array of chess pieces
      */
     public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid, Label label) {
         this.grid = grid;
@@ -113,6 +113,9 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     } else {
                         nextMove = "white";
                     }
+                    /**
+                     * Graveyard
+                     */
                     for(ImageView[] imageViewArray:grid) {
                         for(ImageView imageView:imageViewArray){
                             if (imageView!=null && imageView.getId().equals(newY + "" + newX)){
@@ -140,7 +143,9 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     if(nextMove.equals("white")){
                         coloradder+=7;
                     }
-                    //rocharde
+                    /**
+                     * Rocharde
+                     */
                     if(grid[coloradder][4].getId().equals(group.getId()) && oldy+2 == newX) {
                         grid[coloradder][7].setLayoutX(startfigX+50);
                         grid[coloradder][7].setLayoutY(startfigY);
@@ -152,7 +157,9 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                         grid[coloradder][0].setId(coloradder + "3");
                     }
 
-                    //bauer zu queen
+                    /**
+                     * Pawn/Queen exchange
+                     */
                     for (ImageView imageView:grid[1]){
                         if (imageView.getId().substring(0,1).equals("7")){
                             imageView.setImage(whQ);
@@ -175,6 +182,9 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                 group.setLayoutY(startfigY);
             }
 
+            /**
+             * Game-Over Screen
+             */
             if (board.isCheck(nextMove)){
                 if (board.isCheckmate(nextMove)){
                     gameOver.setVisible(true);

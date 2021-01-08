@@ -12,9 +12,9 @@ public class Pawn extends Figure{
 
     /**
      * Constructor for the Figure "Pawn" implementing the constructor of the superclass.
-     * @param position
-     * @param color
-     * @param board
+     * @param position position Array
+     * @param color color of the Pawn
+     * @param board on the board
      */
     public Pawn(int[] position, String color, Board board) {
         super(position, color,board);

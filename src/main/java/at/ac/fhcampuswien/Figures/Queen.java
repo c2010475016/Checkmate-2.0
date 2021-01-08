@@ -12,9 +12,9 @@ public class Queen extends Figure {
 
     /**
      * Constructor for the Figure "Queen" implementing the constructor of the superclass.
-     * @param position
-     * @param color
-     * @param board
+     * @param position position Array
+     * @param color color of the Queen
+     * @param board on the board
      */
     public Queen (int[] position, String color, Board board) {
         super(position, color,board);

@@ -99,9 +99,9 @@ public class Board {
 
     /**
      * Method to check if a move is valid (Out of bounds, same color)
-     * @param move
-     * @param color
-     * @return
+     * @param move move to be checked
+     * @param color The color of the figure
+     * @return move is possible/impossible
      */
     public boolean isValidMove(int[]move, String color){
         if (move[0] < 0 || move[0] > 7 || move[1] < 0 || move[1] > 7)
@@ -115,7 +115,7 @@ public class Board {
 
     /**
      * Gets current position of the King.
-     * @param color
+     * @param color color of the requested King
      * @return Posotion
      */
     public int[] getKing(String color) {
@@ -155,8 +155,8 @@ public class Board {
 
     /**
      * Method to assess if the King is in Check.
-     * @param color
-     * @return
+     * @param color color of the requested King
+     * @return King is in check/not in check
      */
     public boolean isCheck(String color){
         int[] king = getKing(color);
@@ -176,8 +176,8 @@ public class Board {
 
     /**
      * Method to assess if there is a Checkmate.
-     * @param color
-     * @return
+     * @param color color of the King
+     * @return Checkmate/not Checkmate
      */
     public boolean isCheckmate(String color){
         for(Figure[] figures:this.Schachbrett){

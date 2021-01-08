@@ -12,9 +12,9 @@ public class Rook extends Figure {
 
     /**
      * Constructor for the Figure "Rook" implementing the constructor of the superclass.
-     * @param position
-     * @param color
-     * @param board
+     * @param position position Array
+     * @param color color of the Rook
+     * @param board on the board
      */
     public Rook(int[] position, String color, Board board) {
         super(position, color,board);

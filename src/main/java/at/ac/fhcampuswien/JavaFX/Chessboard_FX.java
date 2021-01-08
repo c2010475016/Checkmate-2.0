@@ -57,6 +57,9 @@ public class Chessboard_FX extends Application {
 
         Group root = new Group();
 
+        /**
+         * Game-Over screen
+         */
         Label gameOver = new Label("Game over!");
         gameOver.setVisible(false);
         gameOver.setText("Game over!");
@@ -256,7 +259,9 @@ public class Chessboard_FX extends Application {
             }
         });
 
-
+        /**
+         * Game window initialisation
+         */
         primaryStage.setTitle("Hello Chess");
         primaryStage.setScene(scene);
         primaryStage.show();

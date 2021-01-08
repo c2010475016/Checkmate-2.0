@@ -12,9 +12,9 @@ public class Bishop extends Figure{
 
     /**
      * Constructor for the Figure "Bishop" implementing the constructor of the superclass.
-     * @param position
-     * @param color
-     * @param board
+     * @param position position Array
+     * @param color Color of the Bishop
+     * @param board on the board
      */
     public Bishop(int[] position, String color, Board board) {
         super(position, color, board);

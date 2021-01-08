@@ -13,9 +13,9 @@ public class Knight extends Figure {
 
     /**
      * Constructor for the Figure "Knight" implementing the constructor of the superclass.
-     * @param position
-     * @param color
-     * @param board
+     * @param position position Array
+     * @param color color of the Knight
+     * @param board on the board
      */
     public Knight(int[] position, String color, Board board) {
 

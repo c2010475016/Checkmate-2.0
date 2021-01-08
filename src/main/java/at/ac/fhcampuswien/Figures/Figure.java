@@ -18,9 +18,9 @@ public class Figure implements Cloneable {
 
     /**
      * Constructor for the Object "Figure".
-     * @param position
-     * @param color
-     * @param board
+     * @param position position of the Figure
+     * @param color color of the Figure
+     * @param board on the board
      */
     public Figure(int[] position, String color, Board board) {
         this.position = position;
@@ -55,13 +55,17 @@ public class Figure implements Cloneable {
 
     /**
      * Setter for the color.
-     * @param color
+     * @param color set color
      */
     public void setColor(String color) {
         this.color = color;
     }
 
-    //fehlt: falls nach dem move noch immer Schach besteht -> invalid move
+    /**
+     * Method to move the Figures, utilizes getPossibleMoves method
+     * @param position position Array
+     * @return move made
+     */
     public boolean move(int[]position){
         int[] oldPos = this.position;
         ArrayList<int[]> moves = getPossibleMoves();
@@ -72,6 +76,9 @@ public class Figure implements Cloneable {
             if (move[0] == position[0] && move[1] == position[1]){
                 System.out.println(this.position[0] + " " + this.position[1]+ " " +position[0]+ " " +position[1]);
 
+                /**
+                 * Chess piece down
+                 */
                 if (this.board.Schachbrett[position[0]][position[1]] != null) {
                     System.out.println("gegnerischen Figur geschlagen!");
                     if(this.board.Schachbrett[position[0]][position[1]].color.equals("white")){
@@ -84,7 +91,9 @@ public class Figure implements Cloneable {
                 this.board.Schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
                 this.board.Schachbrett[oldPos[0]][oldPos[1]] = null;
 
-                //aus Schach muss sich raus bewegt werden
+                /**
+                 * You have to move out of Check
+                 */
                 if(board.isCheck(this.color)){
                     this.board.Schachbrett[oldPos[0]][oldPos[1]] = this.board.Schachbrett[position[0]][position[1]];
                     this.board.Schachbrett[oldPos[0]][oldPos[1]].setPosition(new int[]{oldPos[0],oldPos[1]});
@@ -92,7 +101,9 @@ public class Figure implements Cloneable {
                     return false;
                 }else {
 
-                    //rocharde
+                    /**
+                     * Rocharde
+                     */
                     if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
                             oldPos[1] + 2 == this.position[1]) {
                         this.board.Schachbrett[oldPos[0]][oldPos[1] + 1] = this.board.Schachbrett[oldPos[0]][oldPos[1] + 3];
@@ -107,7 +118,9 @@ public class Figure implements Cloneable {
                         this.board.Schachbrett[oldPos[0]][oldPos[1] - 4] = null;
 
                     }
-                    //bauer zu queen
+                    /**
+                     * Pawn/Queen exchange
+                     */
                     if (this.getClass().getSimpleName().equals("Pawn")) {
                         if (this.getColor().equals("white") && this.position[0] == 7) {
                             this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "white", this.board);

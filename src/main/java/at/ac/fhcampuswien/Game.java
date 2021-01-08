@@ -6,7 +6,20 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 
-//Klasse ist nur zu Testzwecken
+/*
+    *
+    *
+    *
+    * Class is just for testing purposes.
+    *
+    *
+    *
+ */
+
+
+/**
+ * PLayer name input, start of the Game
+ */
 public class Game {
     Board board;
     Player player1;
@@ -26,7 +39,9 @@ public class Game {
         System.out.println(board);
     }
 
-
+    /**
+     * Alternates betwenn players at turn, checks if you move the right Figure, utilizes getPossibleMoves method.
+     */
     public void gameprocess(){
         int winner = 0;
         Scanner gamescanner = new Scanner(System.in);

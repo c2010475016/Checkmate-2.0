@@ -2,6 +2,9 @@ package at.ac.fhcampuswien;
 
 import java.util.Scanner;
 
+/**
+ * Player properties color and name
+ */
 public class Player {
     Scanner scan = new Scanner(System.in);
     private String color;
@@ -12,6 +15,15 @@ public class Player {
         this.name = name;
     }
 
+    /**
+     * getter for player color
+     * @return player color
+     */
     public String getColor() { return color; }
+
+    /**
+     * Getter for player name
+     * @return player name
+     */
     public String getName() { return name; }
 }

@@ -13,9 +13,9 @@ public class King extends Figure{
 
     /**
      * Constructor for the Figure "King" implementing the constructor of the superclass.
-     * @param position
-     * @param color
-     * @param board
+     * @param position Position Array
+     * @param color Color of the King
+     * @param board on the Board
      */
     public King(int[] position, String color, Board board) {
         super(position, color,board);
@@ -47,7 +47,9 @@ public class King extends Figure{
         if (this.board.isValidMove(new int[]{x-1,y-1}, this.getColor())){
         kingMoves.add(new int[]{x-1,y-1}); }
 
-        //rocharde
+        /**
+         * rocharde
+         */
         boolean rochardevar =this.getColor().equals("white");
 
         if (this.board.isValidMove(new int[]{x, y + (2)}, this.getColor()) &&
@@ -67,16 +69,6 @@ public class King extends Figure{
                 ((this.board.Schachbrett[x][y - (4)]).getClass().getSimpleName().equals("Rook"))) {
             kingMoves.add(new int[]{x, y - (2)});
         }
-
-
-
-
-
-
-
-
-
-
         return kingMoves;
     }
 
