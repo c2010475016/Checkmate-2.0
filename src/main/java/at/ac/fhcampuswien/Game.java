@@ -40,7 +40,7 @@ public class Game {
     }
 
     /**
-     * Alternates betwenn players at turn, checks if you move the right Figure, utilizes getPossibleMoves method.
+     * Alternates between players at turn, checks if you move the right Figure, utilizes getPossibleMoves method.
      */
     public void gameprocess(){
         int winner = 0;

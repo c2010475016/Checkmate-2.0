@@ -11,21 +11,6 @@ public class Board {
     private ArrayList<Figure> whiteGraveyard = new ArrayList<Figure>();
     private ArrayList<Figure> blackGraveyard = new ArrayList<Figure>();
 
-    /**
-     * Getter for the white graveyard.
-     * @return
-     */
-    public ArrayList<Figure> getWhiteGraveyard() {
-        return whiteGraveyard;
-    }
-
-    /**
-     * Getter for the black graveyard.
-     * @return
-     */
-    public ArrayList<Figure> getBlackGraveyard() {
-        return blackGraveyard;
-    }
 
     /**
      * Setter for the white graveyard.
@@ -91,7 +76,7 @@ public class Board {
      * Method to move chess pieces using the command window.
      * @param oldpos the old position
      * @param newpos the new position
-     * @return
+     * @return Calls move method of Class Figure.
      */
     public boolean moveFigure(int[]oldpos,int[]newpos) {
         return this.Schachbrett[oldpos[0]][oldpos[1]].move(newpos);
@@ -116,7 +101,7 @@ public class Board {
     /**
      * Gets current position of the King.
      * @param color color of the requested King
-     * @return Posotion
+     * @return Position
      */
     public int[] getKing(String color) {
         for(Figure[] line:Schachbrett){

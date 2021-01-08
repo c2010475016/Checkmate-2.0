@@ -94,7 +94,7 @@ public class Chessboard_FX extends Application {
         }
 
         /**
-         * Sets path for icon ressources for black and white Chess Pieces (Drawn by the infamous Joseph Hangstein)
+         * Places the chess pieces on the board (Drawn by the infamous Joseph Hangstein)
          */
         ImageView[][] grid = new ImageView[8][8];
         String resources = new File("./").getAbsolutePath();

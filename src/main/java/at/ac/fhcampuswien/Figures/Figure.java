@@ -63,7 +63,7 @@ public class Figure implements Cloneable {
 
     /**
      * Method to move the Figures, utilizes getPossibleMoves method
-     * @param position position Array
+     * @param position 2D coordinate position Array. [0]=x, [1] = y.
      * @return move made
      */
     public boolean move(int[]position){
@@ -142,16 +142,5 @@ public class Figure implements Cloneable {
      */
     public ArrayList<int[]> getPossibleMoves(){
         return null;
-    }
-
-    public static void main(String[] args) {
-        Board board = new Board();
-        King king1 = new King(new int[] {3,3},"black",board);
-        board.Schachbrett[3][3] = king1;
-        board.Schachbrett[3][2] = king1;
-        board.Schachbrett[2][2] = king1;
-        board.moveFigure(king1.getPosition(), new int[]{2,2});
-        //King king = new King(new int[] {3,3},"black",board);
-        //king.move(new int[]{2,2});
     }
 }

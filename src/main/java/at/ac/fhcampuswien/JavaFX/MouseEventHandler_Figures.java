@@ -80,6 +80,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             mouseY = newMouseY;
         }
         if (event.getEventType() == MouseEvent.MOUSE_RELEASED) {
+            // Centering the figure on the new field
             newMouseXa = (int) event.getSceneX() / 10;
             newMouseYa = (int) event.getSceneY() / 10;
             newMouseXa *= 10;
@@ -90,10 +91,10 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             while (newMouseYa % 50 != 0) {
                 newMouseYa -= 10;
             }
-
             group.setLayoutX(newMouseXa);
             group.setLayoutY(newMouseYa);
 
+            // translating the JavaFX position to the array position
             int newX = (int)(newMouseXa-100)/50;
             int newY = (int)(newMouseYa-100)/50;
             int oldx = Integer.parseInt(group.getId().substring(0,1));
