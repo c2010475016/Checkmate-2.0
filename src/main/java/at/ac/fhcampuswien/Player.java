@@ -6,7 +6,6 @@ import java.util.Scanner;
  * Player properties color and name (not yet relevant for JavaFX implementation)
  */
 public class Player {
-    Scanner scan = new Scanner(System.in);
     private String color;
     private String name;
 
