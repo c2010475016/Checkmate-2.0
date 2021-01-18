@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,6 +34,10 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static int whiteGraveyardXPosition = 100;
     private static int blackGraveyardXPosition = 100;
     private Label gameOver;
+
+    // Implement sounds played
+    String uriString = new File(resources + "/src/main/java/at/ac/fhcampuswien/resources/chess_move.wav").toURI().toString();
+    MediaPlayer playSound = new MediaPlayer(new Media(uriString));
 
 
     /**
@@ -102,7 +108,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             System.out.println(oldx + "" + oldy);
 
             if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
-
+                playSound.play();
                 if(!board.moveFigure(new int[]{oldx,oldy},new int[]{newY,newX})) {
                     System.out.println("invalid Move");
                     group.setLayoutX(startfigX);
@@ -134,7 +140,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                                     imageView.setFitWidth(25);
                                     whiteGraveyardXPosition = whiteGraveyardXPosition + 25;
                                 }
-                                imageView.removeEventHandler(MouseEvent.ANY, new MouseEventHandler_Figures(imageView,board,grid,gameOver));
+                                imageView.removeEventHandler(MouseEvent.ANY, this::handle);
                             }
                         }
                     }
