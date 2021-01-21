@@ -69,7 +69,10 @@ public class StartScreen extends Application {
         BackgroundImage background;
         background = new BackgroundImage(new Image(bgImageresource + "/src/main/java/at/ac/fhcampuswien/resources/Board.png", 600, 600, false, true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
+        pane.setBackground(new Background(background));
+
          */
+
         primaryStage.setScene(new Scene(pane, 600, 600));
         primaryStage.show();
     }

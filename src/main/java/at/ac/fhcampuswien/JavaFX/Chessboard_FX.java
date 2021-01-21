@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -255,7 +256,22 @@ public class Chessboard_FX {
             }
         });
 
+        Button resetButton = new Button();
+        resetButton.setText("Restart Game");
+        root.getChildren().add(resetButton);
+        resetButton.setTranslateY(300);
+        resetButton.setTranslateX(5);
+        resetButton.setOnAction(event -> {
+            primaryStage.close();
+            board.resetBoard();
 
+            try {
+                gameStart(primaryStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            primaryStage.show();
+        });
 
 
         /**
