@@ -108,7 +108,10 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             System.out.println(oldx + "" + oldy);
 
             if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
+                // Play Sound when piece is moved
                 playSound.play();
+                playSound.seek(playSound.getStartTime());
+
                 if(!board.moveFigure(new int[]{oldx,oldy},new int[]{newY,newX})) {
                     System.out.println("invalid Move");
                     group.setLayoutX(startfigX);
