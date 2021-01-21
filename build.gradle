@@ -7,7 +7,7 @@ plugins {
 group 'at.ac.fhcampuswien'
 version '1.0-SNAPSHOT'
 
-mainClassName = 'at.ac.fhcampuswien.JavaFX.Chessboard_FX'
+mainClassName = 'at.ac.fhcampuswien.JavaFX.StartScreen'
 
 repositories {
     mavenCentral()
@@ -19,5 +19,5 @@ dependencies {
 
 javafx {
     version = "15.0.1"
-    modules = [ 'javafx.controls', 'javafx.fxml']
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media']
 }

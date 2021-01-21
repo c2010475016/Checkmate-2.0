@@ -6,19 +6,15 @@ package at.ac.fhcampuswien.JavaFX;
 
 import at.ac.fhcampuswien.Board;
 import at.ac.fhcampuswien.Player;
-import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -31,11 +27,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 
-public class Chessboard_FX extends Application {
+public class Chessboard_FX {
 
     private static final int BOARD_SIZE = 600;
-    @Override
-    public void start(Stage primaryStage) throws Exception{
+
+    public static Stage gameStart(Stage primaryStage) throws Exception{
 
         /**
          * Setup for new Game
@@ -265,10 +261,6 @@ public class Chessboard_FX extends Application {
         primaryStage.setTitle("Hello Chess");
         primaryStage.setScene(scene);
         primaryStage.show();
+        return primaryStage;
     }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
 }
