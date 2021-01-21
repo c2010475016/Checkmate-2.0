@@ -71,12 +71,12 @@ public class Chessboard_FX {
          */
         Rectangle[][] rectangles = new Rectangle[8][8];
 
-        int groesse_rect = 50;
+        int size_rect = 50;
         for (int i = 0;i<8;i++) {
             for (int x = 0;x<8;x++) {
-                Rectangle r = new Rectangle(groesse_rect,groesse_rect);
-                r.setLayoutX(100 + groesse_rect*x);
-                r.setLayoutY(100 + groesse_rect*i);
+                Rectangle r = new Rectangle(size_rect,size_rect);
+                r.setLayoutX(100 + size_rect*x);
+                r.setLayoutY(100 + size_rect*i);
                 r.setStroke(Color.BLACK);
                 r.setId("10");
                 if ((x+(i%2))%2==0) {
@@ -102,7 +102,7 @@ public class Chessboard_FX {
                         if (x == 0 || x == 7) {
                             Image whR = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_white.png"));
                             ImageView whiteRook = new ImageView(whR);
-                            whiteRook.setLayoutX(100 + groesse_rect * x);
+                            whiteRook.setLayoutX(100 + size_rect * x);
                             whiteRook.setLayoutY(100);
                             whiteRook.setFitHeight(50);
                             whiteRook.setFitWidth(50);
@@ -113,7 +113,7 @@ public class Chessboard_FX {
                         } else if (x == 1 || x == 6) {
                             Image whKn = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/knight_white.png"));
                             ImageView whiteKnight = new ImageView(whKn);
-                            whiteKnight.setLayoutX(100 + groesse_rect * x);
+                            whiteKnight.setLayoutX(100 + size_rect * x);
                             whiteKnight.setLayoutY(100);
                             whiteKnight.setFitHeight(50);
                             whiteKnight.setFitWidth(50);
@@ -124,7 +124,7 @@ public class Chessboard_FX {
                         } else if (x == 2 || x == 5) {
                             Image whB = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/phallus_white.png"));
                             ImageView whiteBishop = new ImageView(whB);
-                            whiteBishop.setLayoutX(100 + groesse_rect * x);
+                            whiteBishop.setLayoutX(100 + size_rect * x);
                             whiteBishop.setLayoutY(100);
                             whiteBishop.setFitHeight(50);
                             whiteBishop.setFitWidth(50);
@@ -135,7 +135,7 @@ public class Chessboard_FX {
                         } else if (x == 3){
                             Image whQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_white.png"));
                             ImageView whiteQueen = new ImageView(whQ);
-                            whiteQueen.setLayoutX(100 + groesse_rect * x);
+                            whiteQueen.setLayoutX(100 + size_rect * x);
                             whiteQueen.setLayoutY(100);
                             whiteQueen.setFitHeight(50);
                             whiteQueen.setFitWidth(50);
@@ -146,7 +146,7 @@ public class Chessboard_FX {
                         } else {
                             Image whKi = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king_white.png"));
                             ImageView whiteKing = new ImageView(whKi);
-                            whiteKing.setLayoutX(100 + groesse_rect * x);
+                            whiteKing.setLayoutX(100 + size_rect * x);
                             whiteKing.setLayoutY(100);
                             whiteKing.setFitHeight(50);
                             whiteKing.setFitWidth(50);
@@ -159,8 +159,8 @@ public class Chessboard_FX {
                     else if (i == 1){
                         Image whP = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/pawn_white.png"));
                         ImageView whitePawn = new ImageView(whP);
-                        whitePawn.setLayoutX(100 + groesse_rect * x);
-                        whitePawn.setLayoutY(100 + groesse_rect * i);
+                        whitePawn.setLayoutX(100 + size_rect * x);
+                        whitePawn.setLayoutY(100 + size_rect * i);
                         whitePawn.setFitHeight(50);
                         whitePawn.setFitWidth(50);
                         whitePawn.setId(i + "" + x);
@@ -171,8 +171,8 @@ public class Chessboard_FX {
                     else if (i == 6){
                         Image blP = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/pawn_black.png"));
                         ImageView blackPawn = new ImageView(blP);
-                        blackPawn.setLayoutX(100 + groesse_rect * x);
-                        blackPawn.setLayoutY(100 + groesse_rect * i);
+                        blackPawn.setLayoutX(100 + size_rect * x);
+                        blackPawn.setLayoutY(100 + size_rect * i);
                         blackPawn.setFitHeight(50);
                         blackPawn.setFitWidth(50);
                         blackPawn.setId(i + "" + x);
@@ -184,8 +184,8 @@ public class Chessboard_FX {
                         if (x == 0 || x == 7) {
                             Image blR = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/rook_black.png"));
                             ImageView blackRook = new ImageView(blR);
-                            blackRook.setLayoutX(100 + groesse_rect * x);
-                            blackRook.setLayoutY(100 + groesse_rect * i);
+                            blackRook.setLayoutX(100 + size_rect * x);
+                            blackRook.setLayoutY(100 + size_rect * i);
                             blackRook.setFitHeight(50);
                             blackRook.setFitWidth(50);
                             blackRook.setId(i + "" + x);
@@ -195,8 +195,8 @@ public class Chessboard_FX {
                         }else if (x == 1 || x == 6) {
                             Image blKn = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/knight_black.png"));
                             ImageView blackKnight = new ImageView(blKn);
-                            blackKnight.setLayoutX(100 + groesse_rect * x);
-                            blackKnight.setLayoutY(100 + groesse_rect * i);
+                            blackKnight.setLayoutX(100 + size_rect * x);
+                            blackKnight.setLayoutY(100 + size_rect * i);
                             blackKnight.setFitHeight(50);
                             blackKnight.setFitWidth(50);
                             blackKnight.setId(i + "" + x);
@@ -206,8 +206,8 @@ public class Chessboard_FX {
                         } else if (x == 2 || x == 5) {
                             Image blB = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/phallus_black.png"));
                             ImageView blackBishop = new ImageView(blB);
-                            blackBishop.setLayoutX(100 + groesse_rect * x);
-                            blackBishop.setLayoutY(100 + groesse_rect * i);
+                            blackBishop.setLayoutX(100 + size_rect * x);
+                            blackBishop.setLayoutY(100 + size_rect * i);
                             blackBishop.setFitHeight(50);
                             blackBishop.setFitWidth(50);
                             blackBishop.setId(i + "" + x);
@@ -217,8 +217,8 @@ public class Chessboard_FX {
                         } else if (x == 3){
                             Image blQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_black.png"));
                             ImageView blackQueen = new ImageView(blQ);
-                            blackQueen.setLayoutX(100 + groesse_rect * x);
-                            blackQueen.setLayoutY(100 + groesse_rect * i);
+                            blackQueen.setLayoutX(100 + size_rect * x);
+                            blackQueen.setLayoutY(100 + size_rect * i);
                             blackQueen.setFitHeight(50);
                             blackQueen.setFitWidth(50);
                             blackQueen.setId(i + "" + x);
@@ -228,8 +228,8 @@ public class Chessboard_FX {
                         } else {
                             Image blKi = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/king_black.png"));
                             ImageView blackKing = new ImageView(blKi);
-                            blackKing.setLayoutX(100 + groesse_rect * x);
-                            blackKing.setLayoutY(100 + groesse_rect * i);
+                            blackKing.setLayoutX(100 + size_rect * x);
+                            blackKing.setLayoutY(100 + size_rect * i);
                             blackKing.setFitHeight(50);
                             blackKing.setFitWidth(50);
                             blackKing.setId(i + "" + x);
@@ -254,6 +254,9 @@ public class Chessboard_FX {
                 System.exit(0);
             }
         });
+
+
+
 
         /**
          * Game window initialisation
