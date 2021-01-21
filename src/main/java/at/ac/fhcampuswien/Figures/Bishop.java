@@ -31,7 +31,7 @@ public class Bishop extends Figure{
             for (int b = 1; b > -2; b -= 2) {
                 for (int i = 1; true; i++) {
                     if (this.board.isValidMove(new int[]{x + (i*a), y + (i*b)}, this.getColor())) {
-                        if (this.board.Schachbrett[x+(i*a)][y+(i*b)] == null) {
+                        if (this.board.chessBoard[x+(i*a)][y+(i*b)] == null) {
                             bishopMoves.add(new int[]{x + (i*a), y + (i*b)});
                         } else {
                             bishopMoves.add(new int[]{x + (i*a), y + (i*b)});

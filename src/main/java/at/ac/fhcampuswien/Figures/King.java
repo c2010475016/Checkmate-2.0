@@ -5,9 +5,7 @@ package at.ac.fhcampuswien.Figures;
  */
 
 import at.ac.fhcampuswien.Board;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class King extends Figure{
 
@@ -48,25 +46,25 @@ public class King extends Figure{
         kingMoves.add(new int[]{x-1,y-1}); }
 
         /**
-         * rocharde
+         * Rocharde
          */
-        boolean rochardevar =this.getColor().equals("white");
+        boolean rochardeVar =this.getColor().equals("white");
 
         if (this.board.isValidMove(new int[]{x, y + (2)}, this.getColor()) &&
-                ((rochardevar && x == 0) || (!rochardevar && x == 7)) && y == 4 &&
-                this.board.Schachbrett[x][y + (1)] == null &&
-                this.board.Schachbrett[x][y + (2)] == null &&
-                this.board.Schachbrett[x][y + (3)] != null &&
-                ((this.board.Schachbrett[x][y + (3)].getClass().getSimpleName().equals("Rook")))) {
+                ((rochardeVar && x == 0) || (!rochardeVar && x == 7)) && y == 4 &&
+                this.board.chessBoard[x][y + (1)] == null &&
+                this.board.chessBoard[x][y + (2)] == null &&
+                this.board.chessBoard[x][y + (3)] != null &&
+                ((this.board.chessBoard[x][y + (3)].getClass().getSimpleName().equals("Rook")))) {
             kingMoves.add(new int[]{x, y + (2)});
         }
         if (this.board.isValidMove(new int[]{x, y - (2)}, this.getColor()) &&
-                ((rochardevar && x == 0) || (!rochardevar && x == 7)) &&  y == 4 &&
-                this.board.Schachbrett[x][y - (1)] == null &&
-                this.board.Schachbrett[x][y - (2)] == null &&
-                this.board.Schachbrett[x][y - (3)] == null &&
-                this.board.Schachbrett[x][y - (4)] != null &&
-                ((this.board.Schachbrett[x][y - (4)]).getClass().getSimpleName().equals("Rook"))) {
+                ((rochardeVar && x == 0) || (!rochardeVar && x == 7)) &&  y == 4 &&
+                this.board.chessBoard[x][y - (1)] == null &&
+                this.board.chessBoard[x][y - (2)] == null &&
+                this.board.chessBoard[x][y - (3)] == null &&
+                this.board.chessBoard[x][y - (4)] != null &&
+                ((this.board.chessBoard[x][y - (4)]).getClass().getSimpleName().equals("Rook"))) {
             kingMoves.add(new int[]{x, y - (2)});
         }
         return kingMoves;

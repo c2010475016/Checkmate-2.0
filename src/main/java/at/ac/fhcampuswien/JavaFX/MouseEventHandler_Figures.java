@@ -1,7 +1,6 @@
 package at.ac.fhcampuswien.JavaFX;;
 
 import at.ac.fhcampuswien.Board;
-import at.ac.fhcampuswien.Figures.Figure;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -10,11 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.List;
+
 
 public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static String nextMove = "white";
@@ -24,7 +22,6 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private double mouseY;
     private double startfigX;
     private double startfigY;
-    private Boolean blackcheck = false,whitecheck  = false;
     private double newMouseXa;
     private double newMouseYa;
     private ImageView[][] grid;
@@ -34,6 +31,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static int whiteGraveyardXPosition = 100;
     private static int blackGraveyardXPosition = 100;
     private Label gameOver;
+
 
     // Implement sounds played
     String uriString = new File(resources + "/src/main/java/at/ac/fhcampuswien/resources/chess_move.wav").toURI().toString();
@@ -107,7 +105,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
             int oldy = Integer.parseInt(group.getId().substring(1));
             System.out.println(oldx + "" + oldy);
 
-            if (nextMove.equals(board.Schachbrett[oldx][oldy].getColor())){
+            if (nextMove.equals(board.chessBoard[oldx][oldy].getColor())){
                 // Play Sound when piece is moved
                 playSound.play();
                 playSound.seek(playSound.getStartTime());
@@ -124,7 +122,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                         nextMove = "white";
                     }
                     /**
-                     * Graveyard
+                     * Visual depiction of the Graveyard
                      */
                     for(ImageView[] imageViewArray:grid) {
                         for(ImageView imageView:imageViewArray){
@@ -149,13 +147,14 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     }
                     group.setId(newY + "" + newX);
 
+
+                    /**
+                     * Visual depiction of the Rocharde
+                     */
                     int coloradder = 0;
                     if(nextMove.equals("white")){
                         coloradder+=7;
                     }
-                    /**
-                     * Rocharde
-                     */
                     if(grid[coloradder][4].getId().equals(group.getId()) && oldy+2 == newX) {
                         grid[coloradder][7].setLayoutX(startfigX+50);
                         grid[coloradder][7].setLayoutY(startfigY);
@@ -168,7 +167,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     }
 
                     /**
-                     * Pawn/Queen exchange
+                     * Visual representation of the Pawn/Queen exchange
                      */
                     for (ImageView imageView:grid[1]){
                         if (imageView.getId().substring(0,1).equals("7")){
@@ -181,16 +180,13 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                             imageView.setImage(blQ);
                         }
                     }
-
-
-
-
                 }
             }else {
                 System.out.println("not your Color");
                 group.setLayoutX(startfigX);
                 group.setLayoutY(startfigY);
             }
+
 
             /**
              * Game-Over Screen

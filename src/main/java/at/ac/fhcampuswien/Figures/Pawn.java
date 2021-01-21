@@ -5,7 +5,6 @@ package at.ac.fhcampuswien.Figures;
  */
 
 import at.ac.fhcampuswien.Board;
-
 import java.util.ArrayList;
 
 public class Pawn extends Figure{
@@ -21,15 +20,6 @@ public class Pawn extends Figure{
     }
 
     /**
-     * ToString Method to tag Chess Pieces on the Board in the Console.
-     * @return Letter for type of figure plus color of the figure.
-     */
-    @Override
-    public String toString() {
-        return "[P" + this.getColor().substring(0,1)+ "]";
-    }
-
-    /**
      * The method getPossibleMoves gets the position of the Figure Pawn and checks the valid moves by using the isValidMove method.
      * @return Returns ArrayList containing all possible valid moves.
      */
@@ -37,24 +27,34 @@ public class Pawn extends Figure{
         int x = this.getPosition()[0], y = this.getPosition()[1];
         ArrayList<int[]> pawnMoves = new ArrayList<int[]>();
         if(getColor().equals("white")) {
-            if (this.board.isValidMove(new int[] {x+1,y}, this.getColor()) && this.board.Schachbrett[x+1][y] == null){
+            if (this.board.isValidMove(new int[] {x+1,y}, this.getColor()) && this.board.chessBoard[x+1][y] == null){
                 pawnMoves.add(new int[]{x+1,y}); }
-            if (x == 1 && this.board.isValidMove(new int[] {x+2,y}, this.getColor()) && this.board.Schachbrett[x+1][y] == null && this.board.Schachbrett[x+2][y] == null){
+            if (x == 1 && this.board.isValidMove(new int[] {x+2,y}, this.getColor()) && this.board.chessBoard[x+1][y] == null && this.board.chessBoard[x+2][y] == null){
                 pawnMoves.add(new int[]{x+2,y}); }
-            if (this.board.isValidMove(new int[] {x+1,y-1}, this.getColor()) && this.board.Schachbrett[x+1][y-1] != null){
+            if (this.board.isValidMove(new int[] {x+1,y-1}, this.getColor()) && this.board.chessBoard[x+1][y-1] != null){
                 pawnMoves.add(new int[]{x+1,y-1}); }
-            if (this.board.isValidMove(new int[] {x+1,y+1}, this.getColor()) && this.board.Schachbrett[x+1][y+1] != null){
+            if (this.board.isValidMove(new int[] {x+1,y+1}, this.getColor()) && this.board.chessBoard[x+1][y+1] != null){
                 pawnMoves.add(new int[]{x+1,y+1}); }
         } else {
-            if (this.board.isValidMove(new int[] {x-1,y}, this.getColor()) && this.board.Schachbrett[x-1][y] == null){
+            if (this.board.isValidMove(new int[] {x-1,y}, this.getColor()) && this.board.chessBoard[x-1][y] == null){
                 pawnMoves.add(new int[]{x-1,y}); }
-            if (x == 6 && this.board.isValidMove(new int[] {x-2,y}, this.getColor()) && this.board.Schachbrett[x-1][y] == null && this.board.Schachbrett[x-2][y] == null){
+            if (x == 6 && this.board.isValidMove(new int[] {x-2,y}, this.getColor()) && this.board.chessBoard[x-1][y] == null && this.board.chessBoard[x-2][y] == null){
                 pawnMoves.add(new int[]{x-2,y}); }
-                if (this.board.isValidMove(new int[]{x-1,y-1}, this.getColor()) && this.board.Schachbrett[x-1][y-1] != null) {
+                if (this.board.isValidMove(new int[]{x-1,y-1}, this.getColor()) && this.board.chessBoard[x-1][y-1] != null) {
                     pawnMoves.add(new int[]{x-1, y-1}); }
-            if (this.board.isValidMove(new int[] {x-1,y+1}, this.getColor()) && this.board.Schachbrett[x-1][y+1] != null){
+            if (this.board.isValidMove(new int[] {x-1,y+1}, this.getColor()) && this.board.chessBoard[x-1][y+1] != null){
                 pawnMoves.add(new int[]{x-1,y+1}); }
         }
         return pawnMoves;
+    }
+
+
+    /**
+     * ToString Method to tag Chess Pieces on the Board in the Console.
+     * @return Letter for type of figure plus color of the figure.
+     */
+    @Override
+    public String toString() {
+        return "[P" + this.getColor().substring(0,1)+ "]";
     }
 }

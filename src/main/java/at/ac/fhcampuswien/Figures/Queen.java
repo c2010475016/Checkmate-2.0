@@ -5,7 +5,6 @@ package at.ac.fhcampuswien.Figures;
  */
 
 import at.ac.fhcampuswien.Board;
-
 import java.util.ArrayList;
 
 public class Queen extends Figure {
@@ -20,14 +19,6 @@ public class Queen extends Figure {
         super(position, color,board);
     }
 
-    /**
-     * ToString Method to tag Chess Pieces on the Board in the Console.
-     * @return Letter for type of figure plus color of the figure.
-     */
-    @Override
-    public String toString() {
-        return "[Q" + this.getColor().substring(0,1)+ "]";
-    }
 
     /**
      * The method getPossibleMoves gets the position of the Figure Queen and checks the valid moves by using the isValidMove method.
@@ -40,7 +31,7 @@ public class Queen extends Figure {
             for (int b = 1; b > -2; b -= 2) {
                 for (int i = 1; true; i++) {
                     if (this.board.isValidMove(new int[]{x + (i*a), y + (i*b)}, this.getColor())) {
-                        if (this.board.Schachbrett[x + (i*a)][y + (i*b)] == null) {
+                        if (this.board.chessBoard[x + (i*a)][y + (i*b)] == null) {
                             queenMoves.add(new int[]{x + (i*a), y + (i*b)});
                         } else {
                             queenMoves.add(new int[]{x + (i*a), y + (i*b)});
@@ -55,7 +46,7 @@ public class Queen extends Figure {
         for (int a = 1;a>-2;a-=2) {
             for (int i = 1; true; i++) {
                 if (this.board.isValidMove(new int[]{x + (i * a), y}, this.getColor())) {
-                    if (this.board.Schachbrett[x + (i * a)][y] == null) {
+                    if (this.board.chessBoard[x + (i * a)][y] == null) {
                         queenMoves.add(new int[]{x + (i * a), y});
                     } else {
                         queenMoves.add(new int[]{x + (i * a), y});
@@ -67,7 +58,7 @@ public class Queen extends Figure {
             }
             for (int i = 1; true; i++){
                 if (this.board.isValidMove(new int[]{x, y + (i*a)}, this.getColor())) {
-                    if (this.board.Schachbrett[x][y+(i*a)] == null) {
+                    if (this.board.chessBoard[x][y+(i*a)] == null) {
                         queenMoves.add(new int[]{x, y + (i*a)});
                     } else {
                         queenMoves.add(new int[]{x, y + (i*a)});
@@ -80,5 +71,16 @@ public class Queen extends Figure {
         }
         return queenMoves;
     }
+
+
+    /**
+     * ToString Method to tag Chess Pieces on the Board in the Console.
+     * @return Letter for type of figure plus color of the figure.
+     */
+    @Override
+    public String toString() {
+        return "[Q" + this.getColor().substring(0,1)+ "]";
+    }
+
 }
 

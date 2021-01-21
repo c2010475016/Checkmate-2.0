@@ -5,7 +5,6 @@ package at.ac.fhcampuswien.Figures;
  */
 
 import at.ac.fhcampuswien.Board;
-
 import java.util.ArrayList;
 
 public class Rook extends Figure {
@@ -32,7 +31,7 @@ public class Rook extends Figure {
         for (int a = 1;a>-2;a-=2) {
                 for (int i = 1; true; i++) {
                     if (this.board.isValidMove(new int[]{x + (i * a), y}, this.getColor())) {
-                        if (this.board.Schachbrett[x + (i * a)][y] == null) {
+                        if (this.board.chessBoard[x + (i * a)][y] == null) {
                             rookMoves.add(new int[]{x + (i * a), y});
                         } else {
                             rookMoves.add(new int[]{x + (i * a), y});
@@ -44,7 +43,7 @@ public class Rook extends Figure {
                 }
                 for (int i = 1; true; i++){
                     if (this.board.isValidMove(new int[]{x, y + (i*a)}, this.getColor())) {
-                        if (this.board.Schachbrett[x][y+(i*a)] == null) {
+                        if (this.board.chessBoard[x][y+(i*a)] == null) {
                             rookMoves.add(new int[]{x, y + (i*a)});
                         } else {
                             rookMoves.add(new int[]{x, y + (i*a)});

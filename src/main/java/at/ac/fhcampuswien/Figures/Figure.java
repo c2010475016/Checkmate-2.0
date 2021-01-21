@@ -5,13 +5,10 @@ package at.ac.fhcampuswien.Figures;
  */
 
 import at.ac.fhcampuswien.Board;
-
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
-public class Figure implements Cloneable {
+public abstract class Figure implements Cloneable {
     private int[] position = new int[2];
     private String color;
     public Board board;
@@ -79,43 +76,43 @@ public class Figure implements Cloneable {
                 /**
                  * Chess piece down
                  */
-                if (this.board.Schachbrett[position[0]][position[1]] != null) {
-                    System.out.println("gegnerischen Figur geschlagen!");
-                    if(this.board.Schachbrett[position[0]][position[1]].color.equals("white")){
-                        this.board.setWhiteGraveyard(this.board.Schachbrett[position[0]][position[1]]);
+                if (this.board.chessBoard[position[0]][position[1]] != null) {
+                    System.out.println("Gegnerische Figur geschlagen!");
+                    if(this.board.chessBoard[position[0]][position[1]].color.equals("white")){
+                        this.board.setWhiteGraveyard(this.board.chessBoard[position[0]][position[1]]);
                     }else {
-                        this.board.setBlackGraveyard(this.board.Schachbrett[position[0]][position[1]]);
+                        this.board.setBlackGraveyard(this.board.chessBoard[position[0]][position[1]]);
                     }
                 }
-                this.board.Schachbrett[position[0]][position[1]] = this.board.Schachbrett[this.position[0]][this.position[1]];
-                this.board.Schachbrett[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
-                this.board.Schachbrett[oldPos[0]][oldPos[1]] = null;
+                this.board.chessBoard[position[0]][position[1]] = this.board.chessBoard[this.position[0]][this.position[1]];
+                this.board.chessBoard[position[0]][position[1]].setPosition(new int[]{position[0],position[1]});
+                this.board.chessBoard[oldPos[0]][oldPos[1]] = null;
 
                 /**
                  * You have to move out of Check
                  */
                 if(board.isCheck(this.color)){
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]] = this.board.Schachbrett[position[0]][position[1]];
-                    this.board.Schachbrett[oldPos[0]][oldPos[1]].setPosition(new int[]{oldPos[0],oldPos[1]});
-                    this.board.Schachbrett[position[0]][position[1]] = null;
+                    this.board.chessBoard[oldPos[0]][oldPos[1]] = this.board.chessBoard[position[0]][position[1]];
+                    this.board.chessBoard[oldPos[0]][oldPos[1]].setPosition(new int[]{oldPos[0],oldPos[1]});
+                    this.board.chessBoard[position[0]][position[1]] = null;
                     return false;
                 }else {
 
                     /**
                      * Rocharde
                      */
-                    if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
+                    if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
                             oldPos[1] + 2 == this.position[1]) {
-                        this.board.Schachbrett[oldPos[0]][oldPos[1] + 1] = this.board.Schachbrett[oldPos[0]][oldPos[1] + 3];
-                        this.board.Schachbrett[oldPos[0]][oldPos[1] + 1].setPosition(new int[]{oldPos[0], oldPos[1] + 1});
-                        this.board.Schachbrett[oldPos[0]][oldPos[1] + 3] = null;
+                        this.board.chessBoard[oldPos[0]][oldPos[1] + 1] = this.board.chessBoard[oldPos[0]][oldPos[1] + 3];
+                        this.board.chessBoard[oldPos[0]][oldPos[1] + 1].setPosition(new int[]{oldPos[0], oldPos[1] + 1});
+                        this.board.chessBoard[oldPos[0]][oldPos[1] + 3] = null;
 
                     }
-                    if (this.board.Schachbrett[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
+                    if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
                             oldPos[1] - 2 == this.position[1]) {
-                        this.board.Schachbrett[oldPos[0]][oldPos[1] - 1] = this.board.Schachbrett[oldPos[0]][oldPos[1] - 4];
-                        this.board.Schachbrett[oldPos[0]][oldPos[1] - 1].setPosition(new int[]{oldPos[0], oldPos[1] - 1});
-                        this.board.Schachbrett[oldPos[0]][oldPos[1] - 4] = null;
+                        this.board.chessBoard[oldPos[0]][oldPos[1] - 1] = this.board.chessBoard[oldPos[0]][oldPos[1] - 4];
+                        this.board.chessBoard[oldPos[0]][oldPos[1] - 1].setPosition(new int[]{oldPos[0], oldPos[1] - 1});
+                        this.board.chessBoard[oldPos[0]][oldPos[1] - 4] = null;
 
                     }
                     /**
@@ -123,10 +120,10 @@ public class Figure implements Cloneable {
                      */
                     if (this.getClass().getSimpleName().equals("Pawn")) {
                         if (this.getColor().equals("white") && this.position[0] == 7) {
-                            this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "white", this.board);
+                            this.board.chessBoard[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "white", this.board);
                         }
                         if (this.getColor().equals("black") && this.position[0] == 0) {
-                            this.board.Schachbrett[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "black", this.board);
+                            this.board.chessBoard[position[0]][position[1]] = new Queen(new int[]{position[0], position[1]}, "black", this.board);
                         }
                     }
 
@@ -138,9 +135,7 @@ public class Figure implements Cloneable {
     }
 
     /**
-     * initialisation of getPossibleMoves method.
+     * Declaration of an abstract method to be implemented by all Figures.
      */
-    public ArrayList<int[]> getPossibleMoves(){
-        return null;
-    }
+    public abstract ArrayList<int[]> getPossibleMoves();
 }

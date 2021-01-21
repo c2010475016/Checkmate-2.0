@@ -5,9 +5,7 @@ package at.ac.fhcampuswien.Figures;
  */
 
 import at.ac.fhcampuswien.Board;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Knight extends Figure {
 
