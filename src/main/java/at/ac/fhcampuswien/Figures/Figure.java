@@ -119,18 +119,28 @@ public abstract class Figure implements Cloneable {
                      * Rocharde
                      */
                     if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
-                            oldPos[1] + 2 == this.position[1] && this.board.chessBoard[oldPos[0]][oldPos[1] + 1].getPossibleRoucharde()) {
+                            oldPos[1] + 2 == this.position[1]) {
                         this.board.chessBoard[oldPos[0]][oldPos[1] + 1] = this.board.chessBoard[oldPos[0]][oldPos[1] + 3];
                         this.board.chessBoard[oldPos[0]][oldPos[1] + 1].setPosition(new int[]{oldPos[0], oldPos[1] + 1});
                         this.board.chessBoard[oldPos[0]][oldPos[1] + 3] = null;
-
+                        this.board.chessBoard[position[0]][position[1]].setPossibleRoucharde(false);
                     }
                     if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
-                            oldPos[1] - 2 == this.position[1] && this.board.chessBoard[oldPos[0]][oldPos[1] + 1].getPossibleRoucharde()) {
+                            oldPos[1] - 2 == this.position[1]) {
                         this.board.chessBoard[oldPos[0]][oldPos[1] - 1] = this.board.chessBoard[oldPos[0]][oldPos[1] - 4];
                         this.board.chessBoard[oldPos[0]][oldPos[1] - 1].setPosition(new int[]{oldPos[0], oldPos[1] - 1});
                         this.board.chessBoard[oldPos[0]][oldPos[1] - 4] = null;
+                        this.board.chessBoard[position[0]][position[1]].setPossibleRoucharde(false);
                     }
+
+                    /**
+                     * after King moves once the Roucharde isnt possible anymore
+                     */
+                    if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King")){
+                        this.board.chessBoard[position[0]][position[1]].setPossibleRoucharde(false);
+                    }
+
+
                     /**
                      * Pawn/Queen exchange
                      */

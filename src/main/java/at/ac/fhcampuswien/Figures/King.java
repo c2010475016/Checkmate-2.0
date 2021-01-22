@@ -79,7 +79,8 @@ public class King extends Figure{
                 this.board.chessBoard[x][y + (1)] == null &&
                 this.board.chessBoard[x][y + (2)] == null &&
                 this.board.chessBoard[x][y + (3)] != null &&
-                ((this.board.chessBoard[x][y + (3)].getClass().getSimpleName().equals("Rook")))) {
+                ((this.board.chessBoard[x][y + (3)].getClass().getSimpleName().equals("Rook"))) &&
+                possibleRoucharde) {
             kingMoves.add(new int[]{x, y + (2)});
         }
         if (this.board.isValidMove(new int[]{x, y - (2)}, this.getColor()) &&
@@ -88,7 +89,8 @@ public class King extends Figure{
                 this.board.chessBoard[x][y - (2)] == null &&
                 this.board.chessBoard[x][y - (3)] == null &&
                 this.board.chessBoard[x][y - (4)] != null &&
-                ((this.board.chessBoard[x][y - (4)]).getClass().getSimpleName().equals("Rook"))) {
+                ((this.board.chessBoard[x][y - (4)]).getClass().getSimpleName().equals("Rook")) &&
+                possibleRoucharde) {
             kingMoves.add(new int[]{x, y - (2)});
         }
         return kingMoves;
