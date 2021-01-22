@@ -15,7 +15,7 @@ import java.io.FileNotFoundException;
 
 
 public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
-    private static String nextMove = "white";
+    public static String nextMove = "white";
     private Board board;
     private Node group;
     private double mouseX;

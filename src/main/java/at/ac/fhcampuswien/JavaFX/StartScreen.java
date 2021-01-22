@@ -1,19 +1,19 @@
 package at.ac.fhcampuswien.JavaFX;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
 import java.io.File;
-import java.io.FileInputStream;
+
+
 
 public class StartScreen extends Application {
     /**
@@ -21,6 +21,11 @@ public class StartScreen extends Application {
      * @param primaryStage The main Stage.
      * @throws Exception
      */
+
+    private final String resources = new File("./").getAbsolutePath();
+    String uriString = new File(resources + "/src/main/java/at/ac/fhcampuswien/resources/sword_unsheath.mp3").toURI().toString();
+    MediaPlayer playSound = new MediaPlayer(new Media(uriString));
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         StackPane pane = new StackPane();
@@ -30,7 +35,11 @@ public class StartScreen extends Application {
         pane.getChildren().add(startButton);
         startButton.setMinWidth(200);
         startButton.setMinHeight(50);
+        Font font = new Font(30);
+        startButton.setFont(font);
         startButton.setOnAction(event -> {
+            playSound.play();
+            playSound.seek(playSound.getStartTime());
             Chessboard_FX game = new Chessboard_FX();
             primaryStage.close();
             Stage startStage = new Stage();
@@ -42,8 +51,22 @@ public class StartScreen extends Application {
         });
 
         // Infotext on the Startscreen
+        final double FONT_SIZE_TINY = 10.0;
         final double FONT_SIZE_SMALL = 14.0;
         final double FONT_SIZE_LARGE = 18.0;
+
+        Label title = new Label("Checkmate");
+        title.setTextFill(Color.web("#ffffff"));
+        pane.getChildren().add(title);
+        title.setTranslateY(-250);
+        title.setFont(new Font("Algerian", 60));
+
+        Label version = new Label("Version 1.0");
+        version.setTextFill(Color.web("#ffffff"));
+        pane.getChildren().add(version);
+        version.setTranslateX(270);
+        version.setTranslateY(290);
+        version.setFont(new Font(FONT_SIZE_TINY));
 
         Label playerInfo1 = new Label("Player 1: White");
         playerInfo1.setTextFill(Color.web("#ffffff"));
@@ -63,11 +86,11 @@ public class StartScreen extends Application {
         beginner.setTranslateY(-60);
         beginner.setFont(new Font(FONT_SIZE_LARGE));
 
-        Label gameInfo = new Label("Press 'q' to quit the Game!");
+        Label gameInfo = new Label("You can always press 'Q' to quit the game!");
         gameInfo.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(gameInfo);
-        gameInfo.setTranslateY(-40);
-        gameInfo.setFont(new Font(FONT_SIZE_SMALL));
+        gameInfo.setTranslateY(290);
+        gameInfo.setFont(new Font(16));
 
 
 

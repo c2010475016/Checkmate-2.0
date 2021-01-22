@@ -262,6 +262,7 @@ public class Chessboard_FX {
         resetButton.setTranslateY(300);
         resetButton.setTranslateX(5);
         resetButton.setOnAction(event -> {
+            MouseEventHandler_Figures.nextMove = "white";
             primaryStage.close();
             board.resetBoard();
 
