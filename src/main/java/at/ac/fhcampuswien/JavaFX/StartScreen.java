@@ -35,7 +35,8 @@ public class StartScreen extends Application {
         pane.getChildren().add(startButton);
         startButton.setMinWidth(200);
         startButton.setMinHeight(50);
-        Font font = new Font(30);
+        startButton.setTranslateX(150);
+        Font font = new Font(25);
         startButton.setFont(font);
         startButton.setOnAction(event -> {
             playSound.play();
@@ -49,6 +50,23 @@ public class StartScreen extends Application {
                 e.printStackTrace();
             }
         });
+        Button rulesButton = new Button();
+        rulesButton.setText("Rules");
+        pane.getChildren().add(rulesButton);
+        rulesButton.setMinWidth(200);
+        rulesButton.setMinHeight(50);
+        rulesButton.setTranslateX(-150);
+        rulesButton.setFont(font);
+        rulesButton.setOnAction(event -> {
+            primaryStage.close();
+            Stage startStage = new Stage();
+            try {
+                RuleSet.rules();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
 
         // Infotext on the Startscreen
         final double FONT_SIZE_TINY = 10.0;
