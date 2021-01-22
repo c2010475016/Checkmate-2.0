@@ -58,8 +58,6 @@ public class StartScreen extends Application {
         rulesButton.setTranslateX(-150);
         rulesButton.setFont(font);
         rulesButton.setOnAction(event -> {
-            primaryStage.close();
-            Stage startStage = new Stage();
             try {
                 RuleSet.rules();
             } catch (Exception e) {
