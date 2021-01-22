@@ -295,6 +295,7 @@ public class Chessboard_FX {
         /**
          * Game window initialisation
          */
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Hello Chess");
         primaryStage.setScene(scene);
         primaryStage.show();
