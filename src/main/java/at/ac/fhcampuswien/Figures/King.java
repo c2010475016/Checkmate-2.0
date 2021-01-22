@@ -9,6 +9,12 @@ import java.util.ArrayList;
 
 public class King extends Figure{
 
+
+    /**
+     * decides if a Roucharde is still possible
+     */
+    private boolean possibleRoucharde = true;
+
     /**
      * Constructor for the Figure "King" implementing the constructor of the superclass.
      * @param position Position Array
@@ -19,6 +25,24 @@ public class King extends Figure{
         super(position, color,board);
     }
 
+
+    @Override
+    /**
+     * decides if a Roucharde is still possible
+     * @return boolean if a Roucharde is still possible
+     */
+    public boolean getPossibleRoucharde() {
+        return possibleRoucharde;
+    }
+
+    @Override
+    /**
+     * sets if a Roucharde is still possible
+     * @param possibleRoucharde decides if a Roucharde is still possible
+     */
+    public void setPossibleRoucharde(boolean possibleRoucharde) {
+        this.possibleRoucharde = possibleRoucharde;
+    }
 
     /**
      * The method getPossibleMoves gets the position of the Figure King and checks the valid moves by using the isValidMove method.

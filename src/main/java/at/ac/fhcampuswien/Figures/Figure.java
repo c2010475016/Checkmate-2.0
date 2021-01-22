@@ -59,6 +59,23 @@ public abstract class Figure implements Cloneable {
     }
 
     /**
+     * decides if a Roucharde is still possible
+     * @return boolean if a Roucharde is still possible
+     */
+    public boolean getPossibleRoucharde() {
+        return true;
+    }
+
+    /**
+     * sets if a Roucharde is still possible
+     * @param possibleRoucharde decides if a Roucharde is still possible
+     */
+    public void setPossibleRoucharde(boolean possibleRoucharde) {
+    }
+
+
+
+    /**
      * Method to move the Figures, utilizes getPossibleMoves method
      * @param position 2D coordinate position Array. [0]=x, [1] = y.
      * @return move made
@@ -102,18 +119,17 @@ public abstract class Figure implements Cloneable {
                      * Rocharde
                      */
                     if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
-                            oldPos[1] + 2 == this.position[1]) {
+                            oldPos[1] + 2 == this.position[1] && this.board.chessBoard[oldPos[0]][oldPos[1] + 1].getPossibleRoucharde()) {
                         this.board.chessBoard[oldPos[0]][oldPos[1] + 1] = this.board.chessBoard[oldPos[0]][oldPos[1] + 3];
                         this.board.chessBoard[oldPos[0]][oldPos[1] + 1].setPosition(new int[]{oldPos[0], oldPos[1] + 1});
                         this.board.chessBoard[oldPos[0]][oldPos[1] + 3] = null;
 
                     }
                     if (this.board.chessBoard[position[0]][position[1]].getClass().getSimpleName().equals("King") &&
-                            oldPos[1] - 2 == this.position[1]) {
+                            oldPos[1] - 2 == this.position[1] && this.board.chessBoard[oldPos[0]][oldPos[1] + 1].getPossibleRoucharde()) {
                         this.board.chessBoard[oldPos[0]][oldPos[1] - 1] = this.board.chessBoard[oldPos[0]][oldPos[1] - 4];
                         this.board.chessBoard[oldPos[0]][oldPos[1] - 1].setPosition(new int[]{oldPos[0], oldPos[1] - 1});
                         this.board.chessBoard[oldPos[0]][oldPos[1] - 4] = null;
-
                     }
                     /**
                      * Pawn/Queen exchange
