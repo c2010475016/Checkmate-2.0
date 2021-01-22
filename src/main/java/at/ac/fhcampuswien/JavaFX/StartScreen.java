@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -45,35 +46,38 @@ public class StartScreen extends Application {
         final double FONT_SIZE_LARGE = 18.0;
 
         Label playerInfo1 = new Label("Player 1: White");
+        playerInfo1.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(playerInfo1);
         playerInfo1.setTranslateY(-100);
         playerInfo1.setFont(new Font(FONT_SIZE_LARGE));
 
         Label playerInfo2 = new Label("Player 2: Black");
+        playerInfo2.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(playerInfo2);
         playerInfo2.setTranslateY(-80);
         playerInfo2.setFont(new Font(FONT_SIZE_LARGE));
 
         Label beginner = new Label("White begins!");
+        beginner.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(beginner);
         beginner.setTranslateY(-60);
         beginner.setFont(new Font(FONT_SIZE_LARGE));
 
         Label gameInfo = new Label("Press 'q' to quit the Game!");
+        gameInfo.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(gameInfo);
         gameInfo.setTranslateY(-40);
         gameInfo.setFont(new Font(FONT_SIZE_SMALL));
 
-        /*
-        String bgImageresource = new File("./").getAbsolutePath();
-        BackgroundImage background;
-        background = new BackgroundImage(new Image(bgImageresource + "/src/main/java/at/ac/fhcampuswien/resources/Board.png", 600, 600, false, true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-                BackgroundSize.DEFAULT);
-        pane.setBackground(new Background(background));
 
-         */
 
+        String resources = new File("./").getAbsolutePath();
+        String uriString = new File(resources + "/src/main/java/at/ac/fhcampuswien/resources/ChessSet.jpg").toURI().toString();
+        Image image = new Image(uriString);
+        BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
+        BackgroundImage background = new BackgroundImage(image, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
         primaryStage.setScene(new Scene(pane, 600, 600));
+        pane.setBackground(new Background(background));
         primaryStage.show();
     }
 }
