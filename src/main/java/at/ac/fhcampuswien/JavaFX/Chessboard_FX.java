@@ -23,6 +23,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -67,18 +68,20 @@ public class Chessboard_FX {
         gameOver.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, 1), new CornerRadii(5.0), new Insets(-5.0))));
         root.getChildren().addAll(gameOver);
 
-        Label blackMove = new Label("Black moves next!");
+        Label blackMove = new Label("Next move: Black!");
         blackMove.setVisible(false);
         blackMove.setFont(Font.font(20));
         blackMove.setLayoutX(215);
         blackMove.setLayoutY(525);
+        blackMove.setTextAlignment(TextAlignment.LEFT);
         root.getChildren().addAll(blackMove);
 
-        Label whiteMove = new Label("White moves next!");
+        Label whiteMove = new Label("Next move: White!");
         whiteMove.setVisible(true);
         whiteMove.setFont(Font.font(20));
         whiteMove.setLayoutX(215);
         whiteMove.setLayoutY(525);
+        whiteMove.setTextAlignment(TextAlignment.LEFT);
         root.getChildren().addAll(whiteMove);
 
         /**

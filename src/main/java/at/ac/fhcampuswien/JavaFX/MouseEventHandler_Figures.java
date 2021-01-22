@@ -123,18 +123,18 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     if (nextMove.equals("white")) {
                         nextMove = "black";
                         if (board.isCheck(nextMove)){
-                            blackMove.setText("Black moves next!\nBlack is in Check!");
+                            blackMove.setText("Next move: Black!\nBlack is in Check!");
                         }else {
-                            blackMove.setText("Black moves next!");
+                            blackMove.setText("Next move: Black!");
                         }
                         whiteMove.setVisible(false);
                         blackMove.setVisible(true);
                     } else {
                         nextMove = "white";
                         if (board.isCheck(nextMove)){
-                            whiteMove.setText("White moves next!\nWhite is in Check!");
+                            whiteMove.setText("Next move: White!\nWhite is in Check!");
                         }else {
-                            whiteMove.setText("White moves next!");
+                            whiteMove.setText("Next move: White!");
                         }
                         blackMove.setVisible(false);
                         whiteMove.setVisible(true);
