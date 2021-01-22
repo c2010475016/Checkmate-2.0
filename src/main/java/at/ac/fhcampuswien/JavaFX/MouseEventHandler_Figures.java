@@ -31,6 +31,8 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
     private static int whiteGraveyardXPosition = 100;
     private static int blackGraveyardXPosition = 100;
     private Label gameOver;
+    private Label whiteMove;
+    private Label blackMove;
 
 
     // Implement sounds played
@@ -44,11 +46,13 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
      * @param board
      * @param grid Array of chess pieces
      */
-    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid, Label label) {
+    public MouseEventHandler_Figures(Node group, Board board,ImageView[][] grid, Label gameOver, Label whiteMove, Label blackMove) {
         this.grid = grid;
         this.group = group;
         this.board = board;
-        this.gameOver = label;
+        this.gameOver = gameOver;
+        this.whiteMove = whiteMove;
+        this.blackMove = blackMove;
         resources = resources.substring(0,resources.length()-2);
         try {
             whQ = new Image(new FileInputStream(resources + "/src/main/java/at/ac/fhcampuswien/resources/queen_white.png"));
@@ -118,8 +122,12 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                     System.out.println(board.toString());
                     if (nextMove.equals("white")) {
                         nextMove = "black";
+                        whiteMove.setVisible(false);
+                        blackMove.setVisible(true);
                     } else {
                         nextMove = "white";
+                        blackMove.setVisible(false);
+                        whiteMove.setVisible(true);
                     }
                     /**
                      * Visual depiction of the Graveyard
