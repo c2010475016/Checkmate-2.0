@@ -68,6 +68,9 @@ public class Chessboard_FX {
         gameOver.setBackground(new Background(new BackgroundFill(Color.rgb(0, 0, 0, 1), new CornerRadii(5.0), new Insets(-5.0))));
         root.getChildren().addAll(gameOver);
 
+        /**
+         * Labels to indicate which players turn it currently is.
+         */
         Label blackMove = new Label("Next move: Black!");
         blackMove.setVisible(false);
         blackMove.setFont(Font.font(20));
@@ -273,11 +276,15 @@ public class Chessboard_FX {
             }
         });
 
+        /**
+         * Reset button in Game window. Press that button to restart the game.
+         */
         Button resetButton = new Button();
         resetButton.setText("Restart Game");
         root.getChildren().add(resetButton);
+        resetButton.setTranslateX(4);
         resetButton.setTranslateY(300);
-        resetButton.setTranslateX(5);
+        resetButton.setMinWidth(90);
         resetButton.setOnAction(event -> {
             MouseEventHandler_Figures.nextMove = "white";
             primaryStage.close();
@@ -291,12 +298,28 @@ public class Chessboard_FX {
             primaryStage.show();
         });
 
+        /**
+         * Button to open the Rules
+         */
+        Button rulesButton = new Button();
+        rulesButton.setText("Rules");
+        root.getChildren().add(rulesButton);
+        rulesButton.setMinWidth(90);
+        rulesButton.setTranslateX(4);
+        rulesButton.setTranslateY(330);
+        rulesButton.setOnAction(event -> {
+            try {
+                RuleSet.rules();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         /**
          * Game window initialisation
          */
         primaryStage.setResizable(false);
-        primaryStage.setTitle("Hello Chess");
+        primaryStage.setTitle("Checkmate");
         primaryStage.setScene(scene);
         primaryStage.show();
         return primaryStage;

@@ -50,6 +50,10 @@ public class StartScreen extends Application {
                 e.printStackTrace();
             }
         });
+
+        /**
+         * Button to open the Rules
+         */
         Button rulesButton = new Button();
         rulesButton.setText("Rules");
         pane.getChildren().add(rulesButton);
@@ -66,50 +70,60 @@ public class StartScreen extends Application {
         });
 
 
-        // Infotext on the Startscreen
-        final double FONT_SIZE_TINY = 10.0;
-        final double FONT_SIZE_SMALL = 14.0;
+        /**
+         * Infotext on the Startscreen
+         */
+        final double FONT_SIZE_SMALL = 10.0;
+        final double FONT_SIZE_MEDIUM = 16.0;
         final double FONT_SIZE_LARGE = 18.0;
 
+        // Title Label
         Label title = new Label("Checkmate");
         title.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(title);
         title.setTranslateY(-250);
         title.setFont(new Font("Algerian", 60));
 
+        // Version Label
         Label version = new Label("Version 1.0");
         version.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(version);
         version.setTranslateX(270);
         version.setTranslateY(290);
-        version.setFont(new Font(FONT_SIZE_TINY));
+        version.setFont(new Font(FONT_SIZE_SMALL));
 
+        // Player 1 Label
         Label playerInfo1 = new Label("Player 1: White");
         playerInfo1.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(playerInfo1);
         playerInfo1.setTranslateY(-100);
         playerInfo1.setFont(new Font(FONT_SIZE_LARGE));
 
+        // Player 2 Label
         Label playerInfo2 = new Label("Player 2: Black");
         playerInfo2.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(playerInfo2);
         playerInfo2.setTranslateY(-80);
         playerInfo2.setFont(new Font(FONT_SIZE_LARGE));
 
+        // Starter Label
         Label beginner = new Label("White begins!");
         beginner.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(beginner);
         beginner.setTranslateY(-60);
         beginner.setFont(new Font(FONT_SIZE_LARGE));
 
+        // Quit Label
         Label gameInfo = new Label("You can always press 'Q' to quit the game!");
         gameInfo.setTextFill(Color.web("#ffffff"));
         pane.getChildren().add(gameInfo);
         gameInfo.setTranslateY(290);
-        gameInfo.setFont(new Font(16));
+        gameInfo.setFont(new Font(FONT_SIZE_MEDIUM));
 
 
-
+        /**
+         * Background settings for Startscreen
+         */
         String resources = new File("./").getAbsolutePath();
         String uriString = new File(resources + "/src/main/java/at/ac/fhcampuswien/resources/ChessSet.jpg").toURI().toString();
         Image image = new Image(uriString);
