@@ -1,9 +1,9 @@
 package at.ac.fhcampuswien.JavaFX;
 
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
@@ -38,5 +38,7 @@ public class RuleSet {
         ruleSet.setWrapText(true);
         rules.getChildren().add(ruleSet);
         ruleSet.setFont(new Font(14));
+        BackgroundFill background = new BackgroundFill(Color.LIGHTGRAY, CornerRadii.EMPTY, Insets.EMPTY);
+        rules.setBackground(new Background(background));
     }
 }

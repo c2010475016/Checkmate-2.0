@@ -264,7 +264,7 @@ public class Chessboard_FX {
         }
 
 
-        Scene scene = new Scene(root, BOARD_SIZE, BOARD_SIZE);
+        Scene scene = new Scene(root, BOARD_SIZE, BOARD_SIZE, Color.LIGHTGRAY);
 
         /**
          * Press "q" to quit the game. Recognizes "q" keystroke and exits.
