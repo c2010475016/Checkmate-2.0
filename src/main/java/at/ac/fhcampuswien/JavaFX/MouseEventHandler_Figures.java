@@ -159,7 +159,7 @@ public class MouseEventHandler_Figures implements EventHandler<MouseEvent> {
                                     imageView.setFitWidth(25);
                                     whiteGraveyardXPosition = whiteGraveyardXPosition + 25;
                                 }
-                                imageView.removeEventHandler(MouseEvent.ANY, this::handle);
+                                imageView.setDisable(true);
                             }
                         }
                     }
